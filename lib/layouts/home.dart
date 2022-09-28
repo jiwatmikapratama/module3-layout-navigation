@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:module3_layout_and_navigation/component/icon.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -53,12 +54,12 @@ class Home extends StatelessWidget {
                             ),
                         Column(
                           // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                          // crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
                               width: 250,
                               child: Card(
-                                color: const Color(0xFF5b59f1),
+                                color: const Color(0xFFc6cae8),
                                 child: Column(
                                   children: [
                                     Container(
@@ -93,7 +94,7 @@ class Home extends StatelessWidget {
                             Container(
                               width: 250,
                               child: Card(
-                                color: const Color(0xFF5b59f1),
+                                color: const Color(0xFFc6cae8),
                                 child: Column(
                                   children: [
                                     Container(
@@ -127,7 +128,6 @@ class Home extends StatelessWidget {
                             ),
                           ],
                         ),
-
                         // Container(
                         //   width: 100,
                         //   height: 100,
@@ -137,6 +137,43 @@ class Home extends StatelessWidget {
                     ),
                   ),
                 ),
+                Container(
+                  margin: EdgeInsets.fromLTRB(3.0, 15.0, 3.0, 10.0),
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.red,
+                        width: 2,
+                      ),
+                      borderRadius: BorderRadius.circular(10)),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Container(
+                            width: 100,
+                            height: 100,
+                            child: Card(
+                              elevation: 8,
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Icon(
+                                    Icons.label,
+                                    size: 50,
+                                  ),
+                                  Text('data')
+                                ],
+                              ),
+                            ),
+                          ),
+                          Ikon(Icons.abc, 'desc')
+                        ],
+                      )
+                    ],
+                  ),
+                )
               ],
             ),
           ),
