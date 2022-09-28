@@ -3,6 +3,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:module3_layout_and_navigation/layouts/home.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});
@@ -108,7 +109,10 @@ class Login extends StatelessWidget {
                             ),
                           ),
                           onPressed: () {
-                            // Respond to button press
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Home()));
                           },
                           child: const Text(
                             "Login",
