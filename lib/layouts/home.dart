@@ -137,39 +137,50 @@ class Home extends StatelessWidget {
                     ),
                   ),
                 ),
+                Material(
+                  elevation: 8,
+                  child: Container(
+                    height: 260,
+                    margin: EdgeInsets.fromLTRB(3.0, 15.0, 3.0, 10.0),
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Color(0xFF1a247f),
+                          width: 2,
+                        ),
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Ikon(Icons.payment, 'desc'),
+                            Ikon(Icons.abc, 'desc'),
+                            Ikon(Icons.abc, 'desc'),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Ikon(Icons.payment, 'desc'),
+                            Ikon(Icons.abc, 'desc'),
+                            Ikon(Icons.abc, 'desc'),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
                 Container(
-                  margin: EdgeInsets.fromLTRB(3.0, 15.0, 3.0, 10.0),
-                  decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Colors.red,
-                        width: 2,
-                      ),
-                      borderRadius: BorderRadius.circular(10)),
-                  child: Column(
+                  width: double.infinity,
+                  color: Color(0xFFe8ebf5),
+                  child: Row(
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Container(
-                            width: 100,
-                            height: 100,
-                            child: Card(
-                              elevation: 8,
-                              child: Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Icon(
-                                    Icons.label,
-                                    size: 50,
-                                  ),
-                                  Text('data')
-                                ],
-                              ),
-                            ),
-                          ),
-                          Ikon(Icons.abc, 'desc')
-                        ],
+                      Column(
+                        children: [Text('data'), Text('data')],
+                      ),
+                      Container(
+                        child: Text('data'),
                       )
                     ],
                   ),
