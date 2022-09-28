@@ -16,7 +16,7 @@ class Home extends StatelessWidget {
           actions: [
             IconButton(
               onPressed: () {},
-              icon: Icon(Icons.logout),
+              icon: const Icon(Icons.logout),
             ),
           ],
         ),
@@ -41,10 +41,10 @@ class Home extends StatelessWidget {
                         Container(
                             width: 140,
                             height: 140,
-                            padding: EdgeInsets.all(5.0),
+                            padding: const EdgeInsets.all(5.0),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(40),
-                              child: Image(
+                              child: const Image(
                                 image: AssetImage(
                                     'images/Foto Berjas No Gaya.png'),
                               ),
@@ -141,10 +141,10 @@ class Home extends StatelessWidget {
                   elevation: 8,
                   child: Container(
                     height: 260,
-                    margin: EdgeInsets.fromLTRB(3.0, 15.0, 3.0, 10.0),
+                    margin: const EdgeInsets.fromLTRB(3.0, 15.0, 3.0, 10.0),
                     decoration: BoxDecoration(
                         border: Border.all(
-                          color: Color(0xFF1a247f),
+                          color: const Color(0xFF1a247f),
                           width: 2,
                         ),
                         borderRadius: BorderRadius.circular(10)),
@@ -173,14 +173,44 @@ class Home extends StatelessWidget {
                 ),
                 Container(
                   width: double.infinity,
-                  color: Color(0xFFe8ebf5),
+                  color: const Color(0xFFe8ebf5),
+                  margin: const EdgeInsets.fromLTRB(3.0, 15.0, 3.0, 10.0),
+                  padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 10.0),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Column(
-                        children: [Text('data'), Text('data')],
+                        children: [
+                          Container(
+                            width: 200,
+                            child: const Text(
+                              'Butuh Bantuan?',
+                              textAlign: TextAlign.start,
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: 200,
+                            child: const Text(
+                              '0878-1234-1024',
+                              textAlign: TextAlign.start,
+                              style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          )
+                        ],
                       ),
                       Container(
-                        child: Text('data'),
+                        child: const Icon(
+                          Icons.phone,
+                          size: 50,
+                          color: Color(0XFF0020f6),
+                        ),
                       )
                     ],
                   ),
