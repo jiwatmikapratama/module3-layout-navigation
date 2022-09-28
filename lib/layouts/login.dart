@@ -12,7 +12,7 @@ class Login extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: Color(0xFF1a247f),
+          backgroundColor: const Color(0xFF1a247f),
           title: const Center(
             child: Text("Koperasi Undiksha"),
           ),
@@ -30,17 +30,17 @@ class Login extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.fromLTRB(10, 20, 10, 0),
+                  margin: const EdgeInsets.fromLTRB(10, 20, 10, 0),
                   decoration: BoxDecoration(
                       border: Border.all(
-                        color: Color(0xFF1a227f),
+                        color: const Color(0xFF1a227f),
                         width: 2,
                       ),
                       borderRadius: BorderRadius.circular(10)),
                   child: Column(
                     children: [
                       Container(
-                        margin: EdgeInsets.all(20),
+                        margin: const EdgeInsets.all(20),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -68,7 +68,7 @@ class Login extends StatelessWidget {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.all(20),
+                        margin: const EdgeInsets.all(20),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -100,7 +100,7 @@ class Login extends StatelessWidget {
                         height: 50,
                         child: TextButton(
                           style: TextButton.styleFrom(
-                            backgroundColor: Color(0xFF1a247f),
+                            backgroundColor: const Color(0xFF1a247f),
                             shadowColor: Colors.black,
                             elevation: 8,
                             shape: RoundedRectangleBorder(
@@ -110,7 +110,7 @@ class Login extends StatelessWidget {
                           onPressed: () {
                             // Respond to button press
                           },
-                          child: Text(
+                          child: const Text(
                             "Login",
                             style: TextStyle(
                               color: Colors.white,
@@ -125,12 +125,12 @@ class Login extends StatelessWidget {
                         children: [
                           TextButton(
                             style: TextButton.styleFrom(
-                              foregroundColor: Color(0xFF5b59f1),
+                              foregroundColor: const Color(0xFF5b59f1),
                             ),
                             onPressed: () {
                               // Respond to button press
                             },
-                            child: Text(
+                            child: const Text(
                               "Daftar MBanking",
                               style: TextStyle(
                                 fontSize: 18,
@@ -139,12 +139,12 @@ class Login extends StatelessWidget {
                           ),
                           TextButton(
                             style: TextButton.styleFrom(
-                              foregroundColor: Color(0xFF5b59f1),
+                              foregroundColor: const Color(0xFF5b59f1),
                             ),
                             onPressed: () {
                               // Respond to button press
                             },
-                            child: Text(
+                            child: const Text(
                               "Lupa password?",
                               style: TextStyle(
                                 fontSize: 18,
@@ -158,10 +158,10 @@ class Login extends StatelessWidget {
                 ),
                 Container(
                   width: double.infinity,
-                  color: Color(0xFFc6cae8),
-                  margin: EdgeInsets.only(top: 20.0),
-                  padding: EdgeInsets.all(20),
-                  child: Center(
+                  color: const Color(0xFFc6cae8),
+                  margin: const EdgeInsets.only(top: 20.0),
+                  padding: const EdgeInsets.all(20),
+                  child: const Center(
                     child: Text(
                       'Copyright @2022 by Undiksha',
                       style: TextStyle(
