@@ -185,17 +185,17 @@ class Home extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            Ikon(Icons.payment, 'desc'),
-                            Ikon(Icons.abc, 'desc'),
-                            Ikon(Icons.abc, 'desc'),
+                            Ikon(Icons.wallet_giftcard, 'Cek Saldo'),
+                            Ikon(Icons.monetization_on, 'Transfer'),
+                            Ikon(Icons.money, 'Deposito'),
                           ],
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            Ikon(Icons.payment, 'desc'),
-                            Ikon(Icons.abc, 'desc'),
-                            Ikon(Icons.abc, 'desc'),
+                            Ikon(Icons.payment, 'Pembayaran'),
+                            Ikon(Icons.attach_money, 'Pinjaman'),
+                            Ikon(Icons.insert_chart, 'Mutasi'),
                           ],
                         ),
                       ],

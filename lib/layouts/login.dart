@@ -5,6 +5,11 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:module3_layout_and_navigation/layouts/home.dart';
 
+AlertDialog alert = AlertDialog(
+  title: Text('Masukan Anda Salah!!'),
+  content: Text('Silahkan Masukan Data yang Benar'),
+);
+
 class Login extends StatefulWidget {
   const Login({super.key});
 
@@ -131,6 +136,13 @@ class _LoginState extends State<Login> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => Home()));
+                            } else {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return alert;
+                                },
+                              );
                             }
                           },
                           child: const Text(
