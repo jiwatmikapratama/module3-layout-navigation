@@ -16,3 +16,9 @@ For help getting started with Flutter development, view the
 samples, guidance on mobile development, and a full API reference.
 
 This Project Owner is I Putu Pratama Putra Jiwatmika
+
+Login:
+![login](https://user-images.githubusercontent.com/88972053/192761240-a134bf76-ed89-4440-8d38-47fed3a9c1a1.png)
+
+Home:
+![home](https://user-images.githubusercontent.com/88972053/192761061-181a54a1-9af3-4eda-a948-79b47099abea.png)
