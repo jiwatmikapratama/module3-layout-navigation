@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:module3_layout_and_navigation/component/icon.dart';
+import 'package:module3_layout_and_navigation/layouts/login.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -7,6 +8,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: const Color(0xFF1a247f),
@@ -15,7 +17,12 @@ class Home extends StatelessWidget {
           ),
           actions: [
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Login()),
+                );
+              },
               icon: const Icon(Icons.logout),
             ),
           ],

@@ -4,6 +4,7 @@ import 'package:module3_layout_and_navigation/layouts/login.dart';
 void main() {
   runApp(
     const MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Login(),
     ),
   );

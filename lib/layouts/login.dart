@@ -13,8 +13,8 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  String username = 'user';
-  String password = '123456';
+  String username = 'I Putu Pratama Putra Jiwatmika';
+  String password = '2015051016';
 
   TextEditingController usernameController = new TextEditingController();
   TextEditingController passwordController = new TextEditingController();
@@ -22,6 +22,7 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         key: _scaffoldKey,
         appBar: AppBar(
@@ -100,6 +101,7 @@ class _LoginState extends State<Login> {
                             Container(
                               child: TextFormField(
                                 controller: passwordController,
+                                obscureText: true,
                                 decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10),
