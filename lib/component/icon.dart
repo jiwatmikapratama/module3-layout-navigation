@@ -8,8 +8,8 @@ class Ikon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 100,
-      height: 100,
+      width: 110,
+      height: 110,
       color: Color(0xFFe8ebf5),
       child: Card(
         color: Color(0xFFe8ebf5),
