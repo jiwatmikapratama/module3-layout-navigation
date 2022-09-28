@@ -1,5 +1,7 @@
 // ignore_for_file: avoid_unnecessary_containers
 
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 class Login extends StatelessWidget {
@@ -31,7 +33,7 @@ class Login extends StatelessWidget {
                   margin: EdgeInsets.fromLTRB(10, 20, 10, 0),
                   decoration: BoxDecoration(
                       border: Border.all(
-                        color: Color(0xFF1a247f),
+                        color: Color(0xFF1a227f),
                         width: 2,
                       ),
                       borderRadius: BorderRadius.circular(10)),
@@ -94,11 +96,27 @@ class Login extends StatelessWidget {
                         ),
                       ),
                       Container(
+                        width: 200,
+                        height: 50,
                         child: TextButton(
+                          style: TextButton.styleFrom(
+                            backgroundColor: Color(0xFF1a247f),
+                            shadowColor: Colors.black,
+                            elevation: 8,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(18.0),
+                            ),
+                          ),
                           onPressed: () {
                             // Respond to button press
                           },
-                          child: Text("TEXT BUTTON"),
+                          child: Text(
+                            "Login",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 14,
+                            ),
+                          ),
                         ),
                       ),
                       Container(
@@ -106,20 +124,51 @@ class Login extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           TextButton(
+                            style: TextButton.styleFrom(
+                              foregroundColor: Color(0xFF5b59f1),
+                            ),
                             onPressed: () {
                               // Respond to button press
                             },
-                            child: Text("TEXT BUTTON"),
+                            child: Text(
+                              "Daftar MBanking",
+                              style: TextStyle(
+                                fontSize: 18,
+                              ),
+                            ),
                           ),
                           TextButton(
+                            style: TextButton.styleFrom(
+                              foregroundColor: Color(0xFF5b59f1),
+                            ),
                             onPressed: () {
                               // Respond to button press
                             },
-                            child: Text("TEXT BUTTON"),
+                            child: Text(
+                              "Lupa password?",
+                              style: TextStyle(
+                                fontSize: 18,
+                              ),
+                            ),
                           ),
                         ],
                       )),
                     ],
+                  ),
+                ),
+                Container(
+                  width: double.infinity,
+                  color: Color(0xFFc6cae8),
+                  margin: EdgeInsets.only(top: 20.0),
+                  padding: EdgeInsets.all(20),
+                  child: Center(
+                    child: Text(
+                      'Copyright @2022 by Undiksha',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
                 ),
               ],
