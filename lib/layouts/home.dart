@@ -20,6 +20,34 @@ class Home extends StatelessWidget {
             ),
           ],
         ),
+        bottomNavigationBar: BottomNavigationBar(
+          items: [
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.settings,
+                  color: Color(0XFF0020f6),
+                  size: 40,
+                ),
+                label: 'Setting'),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.person,
+                  color: Color(0XFF0020f6),
+                  size: 40,
+                ),
+                label: 'Profile'),
+          ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: Color(0xFF1C2474),
+          onPressed: () {},
+          child: Container(
+            margin: EdgeInsets.all(15.0),
+            child: Icon(Icons.qr_code_scanner),
+          ),
+          elevation: 4.0,
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         body: SafeArea(
           child: SingleChildScrollView(
             child: Column(
@@ -128,11 +156,6 @@ class Home extends StatelessWidget {
                             ),
                           ],
                         ),
-                        // Container(
-                        //   width: 100,
-                        //   height: 100,
-                        //   child: Image.asset('images/LOGO UNDIKSHA.png'),
-                        // ),
                       ],
                     ),
                   ),
@@ -174,8 +197,8 @@ class Home extends StatelessWidget {
                 Container(
                   width: double.infinity,
                   color: const Color(0xFFe8ebf5),
-                  margin: const EdgeInsets.fromLTRB(3.0, 15.0, 3.0, 10.0),
-                  padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 10.0),
+                  margin: EdgeInsets.fromLTRB(3.0, 15.0, 3.0, 10.0),
+                  padding: EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 10.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
