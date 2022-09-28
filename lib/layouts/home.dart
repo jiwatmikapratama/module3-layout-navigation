@@ -21,15 +21,16 @@ class Home extends StatelessWidget {
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Color(0xFFe8ebf5),
           items: [
-            BottomNavigationBarItem(
+            const BottomNavigationBarItem(
                 icon: Icon(
                   Icons.settings,
                   color: Color(0XFF0020f6),
                   size: 40,
                 ),
                 label: 'Setting'),
-            BottomNavigationBarItem(
+            const BottomNavigationBarItem(
                 icon: Icon(
                   Icons.person,
                   color: Color(0XFF0020f6),
@@ -39,11 +40,11 @@ class Home extends StatelessWidget {
           ],
         ),
         floatingActionButton: FloatingActionButton(
-          backgroundColor: Color(0xFF1C2474),
+          backgroundColor: const Color(0xFF1C2474),
           onPressed: () {},
           child: Container(
-            margin: EdgeInsets.all(15.0),
-            child: Icon(Icons.qr_code_scanner),
+            margin: const EdgeInsets.all(15.0),
+            child: const Icon(Icons.qr_code_scanner),
           ),
           elevation: 4.0,
         ),
@@ -197,8 +198,8 @@ class Home extends StatelessWidget {
                 Container(
                   width: double.infinity,
                   color: const Color(0xFFe8ebf5),
-                  margin: EdgeInsets.fromLTRB(3.0, 15.0, 3.0, 10.0),
-                  padding: EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 10.0),
+                  margin: const EdgeInsets.fromLTRB(3.0, 15.0, 3.0, 10.0),
+                  padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 10.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [

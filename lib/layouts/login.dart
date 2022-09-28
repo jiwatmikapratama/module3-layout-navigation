@@ -5,13 +5,25 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:module3_layout_and_navigation/layouts/home.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
   const Login({super.key});
 
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  String username = 'user';
+  String password = '123456';
+
+  TextEditingController usernameController = new TextEditingController();
+  TextEditingController passwordController = new TextEditingController();
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        key: _scaffoldKey,
         appBar: AppBar(
           backgroundColor: const Color(0xFF1a247f),
           title: const Center(
@@ -58,6 +70,7 @@ class Login extends StatelessWidget {
                             ),
                             Container(
                               child: TextFormField(
+                                controller: usernameController,
                                 decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10),
@@ -86,6 +99,7 @@ class Login extends StatelessWidget {
                             ),
                             Container(
                               child: TextFormField(
+                                controller: passwordController,
                                 decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10),
@@ -109,10 +123,13 @@ class Login extends StatelessWidget {
                             ),
                           ),
                           onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Home()));
+                            if (usernameController.text == username &&
+                                passwordController.text == password) {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Home()));
+                            }
                           },
                           child: const Text(
                             "Login",
