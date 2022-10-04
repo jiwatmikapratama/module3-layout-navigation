@@ -132,10 +132,12 @@ class _LoginState extends State<Login> {
                           onPressed: () {
                             if (usernameController.text == username &&
                                 passwordController.text == password) {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Home()));
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Home(),
+                                ),
+                              );
                             } else {
                               showDialog(
                                 context: context,
