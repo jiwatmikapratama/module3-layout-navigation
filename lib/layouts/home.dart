@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:module3_layout_and_navigation/component/icon.dart';
 import 'package:module3_layout_and_navigation/layouts/login.dart';
+import 'package:module3_layout_and_navigation/component/detailbox.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -75,93 +76,23 @@ class Home extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
-                            width: 140,
-                            height: 140,
-                            padding: const EdgeInsets.all(5.0),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(40),
-                              child: const Image(
-                                image: AssetImage(
-                                    'images/Foto Berjas No Gaya.png'),
-                              ),
-                              // child: Image.asset(),
-                            )
-                            // Image radius
-                            ),
+                          width: 140,
+                          height: 140,
+                          padding: const EdgeInsets.all(5.0),
+
+                          child: const Image(
+                            image: AssetImage('images/Foto Berjas No Gaya.png'),
+                          ),
+                          // child: Image.asset(),
+                        ),
+                        // Image radius
                         Column(
                           // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           // crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Container(
-                              width: 250,
-                              child: Card(
-                                color: const Color(0xFFc6cae8),
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      padding:
-                                          const EdgeInsets.fromLTRB(5, 5, 5, 5),
-                                      width: 200,
-                                      child: const Text(
-                                        'Nasabah',
-                                        textAlign: TextAlign.start,
-                                        style: TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                    ),
-                                    Container(
-                                      padding:
-                                          const EdgeInsets.fromLTRB(5, 5, 5, 5),
-                                      width: 200,
-                                      child: const Text(
-                                        'I Putu Pratama Putra Jiwatmika',
-                                        textAlign: TextAlign.start,
-                                        style: TextStyle(
-                                          fontSize: 14,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Container(
-                              width: 250,
-                              child: Card(
-                                color: const Color(0xFFc6cae8),
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      padding:
-                                          const EdgeInsets.fromLTRB(5, 5, 5, 5),
-                                      width: 200,
-                                      child: const Text(
-                                        'Total Saldo Anda',
-                                        textAlign: TextAlign.start,
-                                        style: TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                    ),
-                                    Container(
-                                      padding:
-                                          const EdgeInsets.fromLTRB(5, 5, 5, 5),
-                                      width: 200,
-                                      child: const Text(
-                                        'Rp. 12000.000',
-                                        textAlign: TextAlign.start,
-                                        style: TextStyle(
-                                          fontSize: 14,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
+                            detailbox(
+                                'Nasabah', 'I Putu Pratama Putra Jiwatmika'),
+                            detailbox('Total Saldo', '1200.000'),
                           ],
                         ),
                       ],
