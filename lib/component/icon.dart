@@ -7,29 +7,31 @@ class Ikon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 110,
-      height: 110,
-      color: Color(0xFFe8ebf5),
-      child: Card(
+    return InkWell(
+      child: Container(
+        width: 110,
+        height: 110,
         color: Color(0xFFe8ebf5),
-        elevation: 8,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Icon(
-              imageicon,
-              size: 50,
-              color: Color(0XFF0020f6),
-            ),
-            Text(
-              desc,
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
+        child: Card(
+          color: Color(0xFFe8ebf5),
+          elevation: 8,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Icon(
+                imageicon,
+                size: 50,
+                color: Color(0XFF0020f6),
               ),
-            ),
-          ],
+              Text(
+                desc,
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
