@@ -78,15 +78,17 @@ class Home extends StatelessWidget {
                         Container(
                           width: 140,
                           height: 140,
-                          padding: const EdgeInsets.all(5.0),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20)
+                          padding: EdgeInsets.all(5.0),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(50),
+                            child: Image(
+                              image:
+                                  AssetImage('images/Foto Berjas No Gaya.png'),
+                            ),
                           ),
-                          child: const Image(
-                            image: AssetImage('images/Foto Berjas No Gaya.png'),
-                          ),
-                          // child: Image.asset(),
                         ),
+                        // child: Image.asset(),
+
                         // Image radius
                         Column(
                           // mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -102,36 +104,32 @@ class Home extends StatelessWidget {
                   ),
                 ),
                 Material(
-                  elevation: 8,
+                  elevation: 10,
                   child: Container(
                     height: 260,
                     margin: const EdgeInsets.fromLTRB(3.0, 15.0, 3.0, 10.0),
                     decoration: BoxDecoration(
-                        border: Border.all(
-                          color: const Color(0xFF1a247f),
-                          width: 2,
-                        ),
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Ikon(Icons.wallet_giftcard, 'Cek Saldo'),
-                            Ikon(Icons.monetization_on, 'Transfer'),
-                            Ikon(Icons.money, 'Deposito'),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Ikon(Icons.payment, 'Pembayaran'),
-                            Ikon(Icons.attach_money, 'Pinjaman'),
-                            Ikon(Icons.insert_chart, 'Mutasi'),
-                          ],
-                        ),
-                      ],
+                      border: Border.all(
+                        color: const Color(0xFF1a247f),
+                        width: 2,
+                      ),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Container(
+                      width: double.infinity,
+                      child: Wrap(
+                        runAlignment: WrapAlignment.center,
+                        runSpacing: 10.0,
+                        alignment: WrapAlignment.spaceEvenly,
+                        children: [
+                          Ikon(Icons.wallet_giftcard, 'Cek Saldo'),
+                          Ikon(Icons.monetization_on, 'Transfer'),
+                          Ikon(Icons.money, 'Deposito'),
+                          Ikon(Icons.payment, 'Pembayaran'),
+                          Ikon(Icons.attach_money, 'Pinjaman'),
+                          Ikon(Icons.insert_chart, 'Mutasi'),
+                        ],
+                      ),
                     ),
                   ),
                 ),
