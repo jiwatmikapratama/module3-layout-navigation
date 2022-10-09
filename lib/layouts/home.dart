@@ -79,7 +79,9 @@ class Home extends StatelessWidget {
                           width: 140,
                           height: 140,
                           padding: const EdgeInsets.all(5.0),
-
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20)
+                          ),
                           child: const Image(
                             image: AssetImage('images/Foto Berjas No Gaya.png'),
                           ),
