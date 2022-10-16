@@ -117,7 +117,7 @@ class _LoginState extends State<Login> {
                       ),
                     ),
                     Container(
-                      width: 200,
+                      width: MediaQuery.of(context).size.width * 0.4,
                       height: 50,
                       child: TextButton(
                         style: TextButton.styleFrom(
