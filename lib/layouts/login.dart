@@ -206,10 +206,17 @@ class _LoginState extends State<Login> {
                           onPressed: () {
                             // Respond to button press
                           },
-                          child: const Text(
+                          child: Text(
                             "Daftar MBanking",
                             style: TextStyle(
-                              fontSize: 18,
+                              fontSize: ResponsiveValue(context,
+                                  defaultValue: 18.0,
+                                  valueWhen: const [
+                                    Condition.largerThan(
+                                        name: MOBILE, value: 20.0),
+                                    Condition.largerThan(
+                                        name: TABLET, value: 23.0)
+                                  ]).value,
                             ),
                           ),
                         ),
@@ -220,10 +227,17 @@ class _LoginState extends State<Login> {
                           onPressed: () {
                             // Respond to button press
                           },
-                          child: const Text(
+                          child: Text(
                             "Lupa password?",
                             style: TextStyle(
-                              fontSize: 18,
+                              fontSize: ResponsiveValue(context,
+                                  defaultValue: 18.0,
+                                  valueWhen: const [
+                                    Condition.largerThan(
+                                        name: MOBILE, value: 20.0),
+                                    Condition.largerThan(
+                                        name: TABLET, value: 23.0)
+                                  ]).value,
                             ),
                           ),
                         ),
@@ -237,11 +251,16 @@ class _LoginState extends State<Login> {
                 color: const Color(0xFFc6cae8),
                 margin: const EdgeInsets.only(top: 20.0),
                 padding: const EdgeInsets.all(20),
-                child: const Center(
+                child: Center(
                   child: Text(
                     'Copyright @2022 by Undiksha',
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: ResponsiveValue(context,
+                          defaultValue: 18.0,
+                          valueWhen: const [
+                            Condition.largerThan(name: MOBILE, value: 20.0),
+                            Condition.largerThan(name: TABLET, value: 23.0)
+                          ]).value,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
