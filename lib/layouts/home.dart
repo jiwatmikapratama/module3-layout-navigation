@@ -49,19 +49,29 @@ class Home extends StatelessWidget {
         ),
         bottomNavigationBar: BottomNavigationBar(
           backgroundColor: Color(0xFFe8ebf5),
-          items: const [
+          items: [
             BottomNavigationBarItem(
                 icon: Icon(
                   Icons.settings,
                   color: Color(0XFF0020f6),
-                  size: 40,
+                  size: ResponsiveValue(context,
+                      defaultValue: 40.0,
+                      valueWhen: const [
+                        Condition.largerThan(name: MOBILE, value: 45.0),
+                        Condition.largerThan(name: TABLET, value: 50.0)
+                      ]).value,
                 ),
                 label: 'Setting'),
             BottomNavigationBarItem(
                 icon: Icon(
                   Icons.person,
                   color: Color(0XFF0020f6),
-                  size: 40,
+                  size: ResponsiveValue(context,
+                      defaultValue: 40.0,
+                      valueWhen: const [
+                        Condition.largerThan(name: MOBILE, value: 45.0),
+                        Condition.largerThan(name: TABLET, value: 50.0)
+                      ]).value,
                 ),
                 label: 'Profile'),
           ],
@@ -159,37 +169,48 @@ class Home extends StatelessWidget {
                     children: [
                       Column(
                         children: [
-                          Container(
-                            width: 200,
-                            child: const Text(
-                              'Butuh Bantuan?',
-                              textAlign: TextAlign.start,
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w600,
-                              ),
+                          Text(
+                            'Butuh Bantuan?',
+                            textAlign: TextAlign.start,
+                            style: TextStyle(
+                              fontSize: ResponsiveValue(context,
+                                  defaultValue: 24.0,
+                                  valueWhen: const [
+                                    Condition.largerThan(
+                                        name: MOBILE, value: 26.0),
+                                    Condition.largerThan(
+                                        name: TABLET, value: 30.0)
+                                  ]).value,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
-                          Container(
-                            width: 200,
-                            child: const Text(
-                              '0878-1234-1024',
-                              textAlign: TextAlign.start,
-                              style: TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.w600,
-                              ),
+                          Text(
+                            '0878-1234-1024',
+                            textAlign: TextAlign.start,
+                            style: TextStyle(
+                              fontSize: ResponsiveValue(context,
+                                  defaultValue: 24.0,
+                                  valueWhen: const [
+                                    Condition.largerThan(
+                                        name: MOBILE, value: 26.0),
+                                    Condition.largerThan(
+                                        name: TABLET, value: 30.0)
+                                  ]).value,
+                              fontWeight: FontWeight.w600,
                             ),
-                          )
+                          ),
                         ],
                       ),
-                      Container(
-                        child: const Icon(
-                          Icons.phone,
-                          size: 50,
-                          color: Color(0XFF0020f6),
-                        ),
-                      )
+                      Icon(
+                        Icons.phone,
+                        size: ResponsiveValue(context,
+                            defaultValue: 50.0,
+                            valueWhen: const [
+                              Condition.largerThan(name: MOBILE, value: 55.0),
+                              Condition.largerThan(name: TABLET, value: 60.0)
+                            ]).value,
+                        color: Color(0XFF0020f6),
+                      ),
                     ],
                   ),
                 )
