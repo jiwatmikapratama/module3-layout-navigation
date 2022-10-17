@@ -10,13 +10,17 @@ class Ikon extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       child: Container(
-        width: ResponsiveValue(context, defaultValue: 120.0, valueWhen: const [
+        width: ResponsiveValue(context, defaultValue: 120.0, valueWhen: [
           Condition.largerThan(name: MOBILE, value: 180.0),
-          Condition.largerThan(name: TABLET, value: 220.0)
+          Condition.largerThan(name: TABLET, value: 220.0),
+          Condition.largerThan(
+              name: DESKTOP, value: MediaQuery.of(context).size.width * 5)
         ]).value,
-        height: ResponsiveValue(context, defaultValue: 120.0, valueWhen: const [
+        height: ResponsiveValue(context, defaultValue: 120.0, valueWhen: [
           Condition.largerThan(name: MOBILE, value: 180.0),
-          Condition.largerThan(name: TABLET, value: 220.0)
+          Condition.largerThan(name: TABLET, value: 220.0),
+          Condition.largerThan(
+              name: DESKTOP, value: MediaQuery.of(context).size.height * 5)
         ]).value,
         color: Color(0xFFe8ebf5),
         child: Card(
@@ -27,13 +31,25 @@ class Ikon extends StatelessWidget {
             children: [
               Icon(
                 imageicon,
-                size: 50,
+                size: ResponsiveValue(context,
+                    defaultValue: 50.0,
+                    valueWhen: const [
+                      Condition.largerThan(name: MOBILE, value: 75.0),
+                      Condition.largerThan(name: TABLET, value: 85.0),
+                      Condition.largerThan(name: DESKTOP, value: 100.0),
+                    ]).value,
                 color: Color(0XFF0020f6),
               ),
               Text(
                 desc,
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: ResponsiveValue(context,
+                      defaultValue: 18.0,
+                      valueWhen: const [
+                        Condition.largerThan(name: MOBILE, value: 24.0),
+                        Condition.largerThan(name: TABLET, value: 30.0),
+                        Condition.largerThan(name: DESKTOP, value: 42.0),
+                      ]).value,
                   fontWeight: FontWeight.w500,
                 ),
               ),

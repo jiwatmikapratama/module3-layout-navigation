@@ -14,8 +14,18 @@ class Home extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: const Color(0xFF1a247f),
-          title: const Center(
-            child: Text('Koperasi Undiksha'),
+          title: Center(
+            child: Text(
+              'Koperasi Undiksha',
+              style: TextStyle(
+                fontSize: ResponsiveValue(context,
+                    defaultValue: 20.0,
+                    valueWhen: const [
+                      Condition.largerThan(name: MOBILE, value: 22.0),
+                      Condition.largerThan(name: TABLET, value: 25.0)
+                    ]).value,
+              ),
+            ),
           ),
           actions: [
             IconButton(
@@ -25,21 +35,29 @@ class Home extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => Login()),
                 );
               },
-              icon: const Icon(Icons.logout),
+              icon: Icon(
+                Icons.logout,
+                size: ResponsiveValue(context,
+                    defaultValue: 20.0,
+                    valueWhen: const [
+                      Condition.largerThan(name: MOBILE, value: 30.0),
+                      Condition.largerThan(name: TABLET, value: 35.0)
+                    ]).value,
+              ),
             ),
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(
           backgroundColor: Color(0xFFe8ebf5),
-          items: [
-            const BottomNavigationBarItem(
+          items: const [
+            BottomNavigationBarItem(
                 icon: Icon(
                   Icons.settings,
                   color: Color(0XFF0020f6),
                   size: 40,
                 ),
                 label: 'Setting'),
-            const BottomNavigationBarItem(
+            BottomNavigationBarItem(
                 icon: Icon(
                   Icons.person,
                   color: Color(0XFF0020f6),
@@ -74,11 +92,11 @@ class Home extends StatelessWidget {
                         ),
                         borderRadius: BorderRadius.circular(8)),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Container(
-                          width: 140,
-                          height: 140,
+                          width: MediaQuery.of(context).size.width * 0.3,
+                          height: MediaQuery.of(context).size.height * 0.2,
                           padding: EdgeInsets.all(5.0),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(50),

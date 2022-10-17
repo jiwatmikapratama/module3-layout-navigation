@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 class detailbox extends StatelessWidget {
   final String title;
@@ -7,32 +8,45 @@ class detailbox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 250,
-      child: Card(
-        color: const Color(0xFFc6cae8),
+    return Card(
+      color: const Color(0xFFc6cae8),
+      child: Container(
+        width: MediaQuery.of(context).size.width * 0.5,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
               padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
-              width: 200,
+              // width: 200,
               child: Text(
                 title,
                 textAlign: TextAlign.start,
                 style: TextStyle(
-                  fontSize: 14,
+                  fontSize: ResponsiveValue(context,
+                      defaultValue: 14.0,
+                      valueWhen: const [
+                        Condition.largerThan(name: MOBILE, value: 18.0),
+                        Condition.largerThan(name: TABLET, value: 24.0),
+                        Condition.largerThan(name: DESKTOP, value: 32.0),
+                      ]).value,
                   fontWeight: FontWeight.w500,
                 ),
               ),
             ),
             Container(
               padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
-              width: 200,
+              // width: 200,
               child: Text(
                 desc,
                 textAlign: TextAlign.start,
                 style: TextStyle(
-                  fontSize: 14,
+                  fontSize: ResponsiveValue(context,
+                      defaultValue: 14.0,
+                      valueWhen: const [
+                        Condition.largerThan(name: MOBILE, value: 18.0),
+                        Condition.largerThan(name: TABLET, value: 24.0),
+                        Condition.largerThan(name: DESKTOP, value: 32.0),
+                      ]).value,
                 ),
               ),
             ),

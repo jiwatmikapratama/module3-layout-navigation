@@ -157,27 +157,28 @@ class _LoginState extends State<Login> {
                           ),
                         ),
                         onPressed: () {
-                          if (usernameController.text == username &&
-                              passwordController.text == password) {
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => Home(),
-                              ),
-                            );
-                          } else {
-                            showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                if (defaultTargetPlatform ==
-                                    TargetPlatform.iOS) {
-                                  return alertIOS;
-                                } else {
-                                  return alertAndroid;
-                                }
-                              },
-                            );
-                          }
+                          // if (usernameController.text == username &&
+                          //     passwordController.text == password) {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Home(),
+                            ),
+                          );
+                          // }
+                          // else {
+                          //   showDialog(
+                          //     context: context,
+                          //     builder: (BuildContext context) {
+                          //       if (defaultTargetPlatform ==
+                          //           TargetPlatform.iOS) {
+                          //         return alertIOS;
+                          //       } else {
+                          //         return alertAndroid;
+                          //       }
+                          //     },
+                          //   );
+                          // }
                         },
                         child: Text(
                           "Login",
