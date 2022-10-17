@@ -98,6 +98,7 @@ class _LoginState extends State<Login> {
                             child: TextFormField(
                               controller: usernameController,
                               decoration: InputDecoration(
+                                hintText: 'Masukan nama sebagai username...',
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 ),
@@ -135,6 +136,7 @@ class _LoginState extends State<Login> {
                               controller: passwordController,
                               obscureText: true,
                               decoration: InputDecoration(
+                                hintText: 'Masukan NIM sebagai password...',
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 ),
@@ -157,28 +159,27 @@ class _LoginState extends State<Login> {
                           ),
                         ),
                         onPressed: () {
-                          // if (usernameController.text == username &&
-                          //     passwordController.text == password) {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => Home(),
-                            ),
-                          );
-                          // }
-                          // else {
-                          //   showDialog(
-                          //     context: context,
-                          //     builder: (BuildContext context) {
-                          //       if (defaultTargetPlatform ==
-                          //           TargetPlatform.iOS) {
-                          //         return alertIOS;
-                          //       } else {
-                          //         return alertAndroid;
-                          //       }
-                          //     },
-                          //   );
-                          // }
+                          if (usernameController.text == username &&
+                              passwordController.text == password) {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Home(),
+                              ),
+                            );
+                          } else {
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                if (defaultTargetPlatform ==
+                                    TargetPlatform.iOS) {
+                                  return alertIOS;
+                                } else {
+                                  return alertAndroid;
+                                }
+                              },
+                            );
+                          }
                         },
                         child: Text(
                           "Login",
