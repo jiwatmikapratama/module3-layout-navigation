@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 class Ikon extends StatelessWidget {
   var imageicon;
@@ -9,8 +10,14 @@ class Ikon extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       child: Container(
-        width: 110,
-        height: 110,
+        width: ResponsiveValue(context, defaultValue: 120.0, valueWhen: const [
+          Condition.largerThan(name: MOBILE, value: 180.0),
+          Condition.largerThan(name: TABLET, value: 220.0)
+        ]).value,
+        height: ResponsiveValue(context, defaultValue: 120.0, valueWhen: const [
+          Condition.largerThan(name: MOBILE, value: 180.0),
+          Condition.largerThan(name: TABLET, value: 220.0)
+        ]).value,
         color: Color(0xFFe8ebf5),
         child: Card(
           color: Color(0xFFe8ebf5),

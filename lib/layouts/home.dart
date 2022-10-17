@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:module3_layout_and_navigation/component/icon.dart';
 import 'package:module3_layout_and_navigation/layouts/login.dart';
 import 'package:module3_layout_and_navigation/component/detailbox.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -106,7 +107,7 @@ class Home extends StatelessWidget {
                 Material(
                   elevation: 10,
                   child: Container(
-                    height: 260,
+                    width: double.infinity,
                     margin: const EdgeInsets.fromLTRB(3.0, 15.0, 3.0, 10.0),
                     decoration: BoxDecoration(
                       border: Border.all(
@@ -115,21 +116,18 @@ class Home extends StatelessWidget {
                       ),
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: Container(
-                      width: double.infinity,
-                      child: Wrap(
-                        runAlignment: WrapAlignment.center,
-                        runSpacing: 10.0,
-                        alignment: WrapAlignment.spaceEvenly,
-                        children: [
-                          Ikon(Icons.wallet_giftcard, 'Cek Saldo'),
-                          Ikon(Icons.monetization_on, 'Transfer'),
-                          Ikon(Icons.money, 'Deposito'),
-                          Ikon(Icons.payment, 'Pembayaran'),
-                          Ikon(Icons.attach_money, 'Pinjaman'),
-                          Ikon(Icons.insert_chart, 'Mutasi'),
-                        ],
-                      ),
+                    child: Wrap(
+                      runAlignment: WrapAlignment.center,
+                      runSpacing: 10.0,
+                      alignment: WrapAlignment.spaceEvenly,
+                      children: [
+                        Ikon(Icons.wallet_giftcard, 'Cek Saldo'),
+                        Ikon(Icons.monetization_on, 'Transfer'),
+                        Ikon(Icons.money, 'Deposito'),
+                        Ikon(Icons.payment, 'Pembayaran'),
+                        Ikon(Icons.attach_money, 'Pinjaman'),
+                        Ikon(Icons.insert_chart, 'Mutasi'),
+                      ],
                     ),
                   ),
                 ),
