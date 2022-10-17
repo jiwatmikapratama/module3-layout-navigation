@@ -234,7 +234,7 @@ class Home extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            '0878-1234-1024',
+                            '0857-9223-6153',
                             textAlign: TextAlign.start,
                             style: TextStyle(
                               fontSize: ResponsiveValue(context,
