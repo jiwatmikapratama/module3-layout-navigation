@@ -1,13 +1,9 @@
 // ignore_for_file: avoid_unnecessary_containers
-
-import 'dart:html';
-import 'dart:ui';
-import 'dart:io' show Platform;
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:module3_layout_and_navigation/layouts/home.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 AlertDialog alertAndroid = AlertDialog(
   title: Text('Masukan Anda Salah!!'),
@@ -40,8 +36,18 @@ class _LoginState extends State<Login> {
         key: _scaffoldKey,
         appBar: AppBar(
           backgroundColor: const Color(0xFF1a247f),
-          title: const Center(
-            child: Text("Koperasi Undiksha"),
+          title: Center(
+            child: Text(
+              "Koperasi Undiksha",
+              style: TextStyle(
+                fontSize: ResponsiveValue(context,
+                    defaultValue: 20.0,
+                    valueWhen: const [
+                      Condition.largerThan(name: MOBILE, value: 22.0),
+                      Condition.largerThan(name: TABLET, value: 25.0)
+                    ]).value,
+              ),
+            ),
           ),
         ),
         body: SingleChildScrollView(
@@ -70,14 +76,21 @@ class _LoginState extends State<Login> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Padding(
-                            padding: EdgeInsets.only(
+                          Padding(
+                            padding: const EdgeInsets.only(
                               bottom: 12,
                             ),
                             child: Text(
-                              'Username',
+                              'Username:',
                               style: TextStyle(
-                                fontSize: 20,
+                                fontSize: ResponsiveValue(context,
+                                    defaultValue: 20.0,
+                                    valueWhen: const [
+                                      Condition.largerThan(
+                                          name: MOBILE, value: 22.0),
+                                      Condition.largerThan(
+                                          name: TABLET, value: 25.0)
+                                    ]).value,
                               ),
                             ),
                           ),
@@ -99,14 +112,21 @@ class _LoginState extends State<Login> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Padding(
-                            padding: EdgeInsets.only(
+                          Padding(
+                            padding: const EdgeInsets.only(
                               bottom: 12,
                             ),
                             child: Text(
-                              'Password',
+                              'Password: ',
                               style: TextStyle(
-                                fontSize: 20,
+                                fontSize: ResponsiveValue(context,
+                                    defaultValue: 20.0,
+                                    valueWhen: const [
+                                      Condition.largerThan(
+                                          name: MOBILE, value: 22.0),
+                                      Condition.largerThan(
+                                          name: TABLET, value: 25.0)
+                                    ]).value,
                               ),
                             ),
                           ),
@@ -159,11 +179,18 @@ class _LoginState extends State<Login> {
                             );
                           }
                         },
-                        child: const Text(
+                        child: Text(
                           "Login",
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 14,
+                            fontSize: ResponsiveValue(context,
+                                defaultValue: 14.0,
+                                valueWhen: const [
+                                  Condition.largerThan(
+                                      name: MOBILE, value: 16.0),
+                                  Condition.largerThan(
+                                      name: TABLET, value: 19.0)
+                                ]).value,
                           ),
                         ),
                       ),
