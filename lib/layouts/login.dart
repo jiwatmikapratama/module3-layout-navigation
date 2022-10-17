@@ -1,11 +1,19 @@
 // ignore_for_file: avoid_unnecessary_containers
 
+import 'dart:html';
 import 'dart:ui';
+import 'dart:io' show Platform;
 
+import 'package:flutter/foundation.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:module3_layout_and_navigation/layouts/home.dart';
 
-AlertDialog alert = AlertDialog(
+AlertDialog alertAndroid = AlertDialog(
+  title: Text('Masukan Anda Salah!!'),
+  content: Text('Silahkan Masukan Data yang Benar'),
+);
+CupertinoAlertDialog alertIOS = CupertinoAlertDialog(
   title: Text('Masukan Anda Salah!!'),
   content: Text('Silahkan Masukan Data yang Benar'),
 );
@@ -141,7 +149,12 @@ class _LoginState extends State<Login> {
                             showDialog(
                               context: context,
                               builder: (BuildContext context) {
-                                return alert;
+                                if (defaultTargetPlatform ==
+                                    TargetPlatform.iOS) {
+                                  return alertIOS;
+                                } else {
+                                  return alertAndroid;
+                                }
                               },
                             );
                           }
