@@ -109,14 +109,17 @@ class Home extends StatelessWidget {
                               ),
                               borderRadius: BorderRadius.circular(8)),
                           child: ResponsiveRowColumn(
-                            rowMainAxisAlignment: MainAxisAlignment.spaceAround,
+                            rowMainAxisAlignment:
+                                MainAxisAlignment.spaceBetween,
                             layout: ResponsiveWrapper.of(context)
                                     .isLargerThan(DESKTOP)
                                 ? ResponsiveRowColumnType.ROW
-                                : ResponsiveRowColumnType.ROW,
+                                : ResponsiveRowColumnType.COLUMN,
                             children: [
                               ResponsiveRowColumnItem(
                                 child: ResponsiveRowColumn(
+                                  rowMainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   layout: ResponsiveWrapper.of(context)
                                           .isLargerThan(TABLET)
                                       ? ResponsiveRowColumnType.COLUMN
@@ -147,7 +150,8 @@ class Home extends StatelessWidget {
                                                 .isLargerThan(TABLET)
                                             ? ResponsiveRowColumnType.COLUMN
                                             : ResponsiveRowColumnType.COLUMN,
-                                        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        rowMainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
                                         // crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           ResponsiveRowColumnItem(

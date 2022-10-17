@@ -11,7 +11,7 @@ class detailbox extends StatelessWidget {
     return Card(
       color: const Color(0xFFc6cae8),
       child: Container(
-        width: MediaQuery.of(context).size.width * 0.4,
+        width: MediaQuery.of(context).size.width * 0.5,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -34,7 +34,6 @@ class detailbox extends StatelessWidget {
               ),
             ),
             Container(
-              padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
               // width: 200,
               child: Text(
                 desc,
