@@ -11,14 +11,14 @@ class Ikon extends StatelessWidget {
     return InkWell(
       child: Container(
         width: ResponsiveValue(context, defaultValue: 120.0, valueWhen: [
-          Condition.largerThan(name: MOBILE, value: 180.0),
-          Condition.largerThan(name: TABLET, value: 220.0),
+          Condition.largerThan(name: MOBILE, value: 150.0),
+          // Condition.largerThan(name: TABLET, value: 220.0),
           Condition.largerThan(
               name: DESKTOP, value: MediaQuery.of(context).size.width * 5)
         ]).value,
         height: ResponsiveValue(context, defaultValue: 120.0, valueWhen: [
-          Condition.largerThan(name: MOBILE, value: 180.0),
-          Condition.largerThan(name: TABLET, value: 220.0),
+          Condition.largerThan(name: MOBILE, value: 150.0),
+          // Condition.largerThan(name: TABLET, value: 220.0),
           Condition.largerThan(
               name: DESKTOP, value: MediaQuery.of(context).size.height * 5)
         ]).value,
@@ -32,11 +32,11 @@ class Ikon extends StatelessWidget {
               Icon(
                 imageicon,
                 size: ResponsiveValue(context,
-                    defaultValue: 50.0,
+                    defaultValue: 40.0,
                     valueWhen: const [
-                      Condition.largerThan(name: MOBILE, value: 75.0),
-                      Condition.largerThan(name: TABLET, value: 85.0),
-                      Condition.largerThan(name: DESKTOP, value: 100.0),
+                      Condition.largerThan(name: MOBILE, value: 50.0),
+                      // Condition.largerThan(name: TABLET, value: 85.0),
+                      // Condition.largerThan(name: DESKTOP, value: 100.0),
                     ]).value,
                 color: Color(0XFF0020f6),
               ),
@@ -47,8 +47,8 @@ class Ikon extends StatelessWidget {
                       defaultValue: 18.0,
                       valueWhen: const [
                         Condition.largerThan(name: MOBILE, value: 24.0),
-                        Condition.largerThan(name: TABLET, value: 30.0),
-                        Condition.largerThan(name: DESKTOP, value: 42.0),
+                        // Condition.largerThan(name: TABLET, value: 30.0),
+                        // Condition.largerThan(name: DESKTOP, value: 42.0),
                       ]).value,
                   fontWeight: FontWeight.w500,
                 ),

@@ -89,77 +89,122 @@ class Home extends StatelessWidget {
         body: SafeArea(
           child: SingleChildScrollView(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Material(
-                  elevation: 8,
-                  child: Container(
-                    margin: const EdgeInsets.all(3.0),
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                          color: const Color(0xFF1a227f),
-                          width: 2,
-                        ),
-                        borderRadius: BorderRadius.circular(8)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Container(
-                          width: MediaQuery.of(context).size.width * 0.3,
-                          height: MediaQuery.of(context).size.height * 0.2,
-                          padding: EdgeInsets.all(5.0),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(50),
-                            child: Image(
-                              image:
-                                  AssetImage('images/Foto Berjas No Gaya.png'),
-                            ),
+                ResponsiveRowColumn(
+                  rowMainAxisAlignment: MainAxisAlignment.start,
+                  layout: ResponsiveWrapper.of(context).isSmallerThan(DESKTOP)
+                      ? ResponsiveRowColumnType.COLUMN
+                      : ResponsiveRowColumnType.ROW,
+                  children: [
+                    ResponsiveRowColumnItem(
+                      rowFlex: 1,
+                      child: Material(
+                        elevation: 8,
+                        child: Container(
+                          margin: const EdgeInsets.all(3.0),
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                color: const Color(0xFF1a227f),
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(8)),
+                          child: ResponsiveRowColumn(
+                            rowMainAxisAlignment: MainAxisAlignment.spaceAround,
+                            layout: ResponsiveWrapper.of(context)
+                                    .isLargerThan(DESKTOP)
+                                ? ResponsiveRowColumnType.ROW
+                                : ResponsiveRowColumnType.ROW,
+                            children: [
+                              ResponsiveRowColumnItem(
+                                child: ResponsiveRowColumn(
+                                  layout: ResponsiveWrapper.of(context)
+                                          .isLargerThan(TABLET)
+                                      ? ResponsiveRowColumnType.COLUMN
+                                      : ResponsiveRowColumnType.ROW,
+                                  children: [
+                                    ResponsiveRowColumnItem(
+                                      child: Container(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.3,
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.2,
+                                        padding: EdgeInsets.all(5.0),
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(50),
+                                          child: Image(
+                                            image: AssetImage(
+                                                'images/Foto Berjas No Gaya.png'),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    ResponsiveRowColumnItem(
+                                      child: ResponsiveRowColumn(
+                                        layout: ResponsiveWrapper.of(context)
+                                                .isLargerThan(TABLET)
+                                            ? ResponsiveRowColumnType.COLUMN
+                                            : ResponsiveRowColumnType.COLUMN,
+                                        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        // crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          ResponsiveRowColumnItem(
+                                            child: detailbox('Nasabah',
+                                                'I Putu Pratama Putra Jiwatmika'),
+                                          ),
+                                          ResponsiveRowColumnItem(
+                                              child: detailbox(
+                                                  'Total Saldo', '1200.000')),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              // child: Image.asset(),
+
+                              // Image radius
+                            ],
                           ),
                         ),
-                        // child: Image.asset(),
-
-                        // Image radius
-                        Column(
-                          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          // crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            detailbox(
-                                'Nasabah', 'I Putu Pratama Putra Jiwatmika'),
-                            detailbox('Total Saldo', '1200.000'),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Material(
-                  elevation: 10,
-                  child: Container(
-                    width: double.infinity,
-                    margin: const EdgeInsets.fromLTRB(3.0, 15.0, 3.0, 10.0),
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: const Color(0xFF1a247f),
-                        width: 2,
                       ),
-                      borderRadius: BorderRadius.circular(10),
                     ),
-                    child: Wrap(
-                      runAlignment: WrapAlignment.center,
-                      runSpacing: 10.0,
-                      alignment: WrapAlignment.spaceEvenly,
-                      children: [
-                        Ikon(Icons.wallet_giftcard, 'Cek Saldo'),
-                        Ikon(Icons.monetization_on, 'Transfer'),
-                        Ikon(Icons.money, 'Deposito'),
-                        Ikon(Icons.payment, 'Pembayaran'),
-                        Ikon(Icons.attach_money, 'Pinjaman'),
-                        Ikon(Icons.insert_chart, 'Mutasi'),
-                      ],
+                    ResponsiveRowColumnItem(
+                      rowFlex: 1,
+                      child: Material(
+                        elevation: 10,
+                        child: Container(
+                          width: double.infinity,
+                          margin:
+                              const EdgeInsets.fromLTRB(3.0, 15.0, 3.0, 10.0),
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: const Color(0xFF1a247f),
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Wrap(
+                            runAlignment: WrapAlignment.center,
+                            runSpacing: 10.0,
+                            alignment: WrapAlignment.spaceEvenly,
+                            children: [
+                              Ikon(Icons.wallet_giftcard, 'Cek Saldo'),
+                              Ikon(Icons.monetization_on, 'Transfer'),
+                              Ikon(Icons.money, 'Deposito'),
+                              Ikon(Icons.payment, 'Pembayaran'),
+                              Ikon(Icons.attach_money, 'Pinjaman'),
+                              Ikon(Icons.insert_chart, 'Mutasi'),
+                            ],
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
+                  ],
                 ),
-                Container(
+                (Container(
                   width: double.infinity,
                   color: const Color(0xFFe8ebf5),
                   margin: const EdgeInsets.fromLTRB(3.0, 15.0, 3.0, 10.0),
@@ -213,7 +258,7 @@ class Home extends StatelessWidget {
                       ),
                     ],
                   ),
-                )
+                )),
               ],
             ),
           ),
