@@ -195,7 +195,7 @@ class Home extends StatelessWidget {
                             runSpacing: 10.0,
                             alignment: WrapAlignment.spaceEvenly,
                             children: [
-                              Ikon(Icons.wallet_giftcard, 'Cek Saldo'),
+                              Ikon(Icons.wallet_giftcard, 'Cek Saldo', ),
                               Ikon(Icons.monetization_on, 'Transfer'),
                               Ikon(Icons.money, 'Deposito'),
                               Ikon(Icons.payment, 'Pembayaran'),

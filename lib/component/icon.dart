@@ -3,12 +3,21 @@ import 'package:responsive_framework/responsive_framework.dart';
 
 class Ikon extends StatelessWidget {
   var imageicon;
+  var route_page;
   final String desc;
-  Ikon(this.imageicon, this.desc);
+  Ikon(this.imageicon, this.desc, this.route_page);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      onTap: (() {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => route_page(),
+          ),
+        );
+      }),
       child: Container(
         width: ResponsiveValue(context, defaultValue: 120.0, valueWhen: [
           Condition.largerThan(name: MOBILE, value: 150.0),
