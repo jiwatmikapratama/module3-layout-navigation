@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:module3_layout_and_navigation/component/icon.dart';
+import 'package:module3_layout_and_navigation/layouts/deposito.dart';
 import 'package:module3_layout_and_navigation/layouts/login.dart';
 import 'package:module3_layout_and_navigation/component/detailbox.dart';
+import 'package:module3_layout_and_navigation/layouts/mutasi.dart';
+import 'package:module3_layout_and_navigation/layouts/pembayaran.dart';
+import 'package:module3_layout_and_navigation/layouts/pinjaman.dart';
+import 'package:module3_layout_and_navigation/layouts/transfer.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 class Home extends StatelessWidget {
@@ -195,12 +200,15 @@ class Home extends StatelessWidget {
                             runSpacing: 10.0,
                             alignment: WrapAlignment.spaceEvenly,
                             children: [
-                              Ikon(Icons.wallet_giftcard, 'Cek Saldo', ),
-                              Ikon(Icons.monetization_on, 'Transfer'),
-                              Ikon(Icons.money, 'Deposito'),
-                              Ikon(Icons.payment, 'Pembayaran'),
-                              Ikon(Icons.attach_money, 'Pinjaman'),
-                              Ikon(Icons.insert_chart, 'Mutasi'),
+                              Ikon(Icons.wallet_giftcard, 'Cek Saldo',
+                                  Pinjaman()),
+                              Ikon(Icons.monetization_on, 'Transfer',
+                                  Transfer()),
+                              Ikon(Icons.money, 'Deposito', Deposito()),
+                              Ikon(Icons.payment, 'Pembayaran', Pembayaran()),
+                              Ikon(Icons.attach_money, 'Pinjaman', Pinjaman()),
+                              Ikon(Icons.insert_chart, 'Mutasi', Mutasi()),
+                              
                             ],
                           ),
                         ),

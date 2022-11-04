@@ -11,10 +11,10 @@ class Ikon extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: (() {
-        Navigator.pushReplacement(
+        Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => route_page(),
+            builder: (context) => route_page,
           ),
         );
       }),
