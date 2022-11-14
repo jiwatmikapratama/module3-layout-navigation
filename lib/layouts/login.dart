@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:module3_layout_and_navigation/layouts/home.dart';
+import 'package:module3_layout_and_navigation/services/list_users_services.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 AlertDialog alertAndroid = AlertDialog(
@@ -28,6 +29,12 @@ class _LoginState extends State<Login> {
   final TextEditingController usernameController = new TextEditingController();
   final TextEditingController passwordController = new TextEditingController();
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+
+  postLogin(String username, String password) async {
+    ListUsersService _service = ListUsersService();
+    await _service.postLogin(username, password);
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -159,8 +166,23 @@ class _LoginState extends State<Login> {
                           ),
                         ),
                         onPressed: () {
-                          if (usernameController.text == username &&
-                              passwordController.text == password) {
+                          // if (usernameController.text == username &&
+                          //     passwordController.text == password) {
+                          //   Navigator.pushReplacement(
+                          //     context,
+                          //     MaterialPageRoute(
+                          //       builder: (context) => Home(),
+                          //     ),
+                          //   );
+                          postLogin(
+                              usernameController.text, passwordController.text);
+                          if (postLogin(usernameController.text,
+                                  passwordController.text) !=
+                              null) {
+                            print(usernameController.text);
+                            print(passwordController.text);
+                            // print(usernameController.text);
+                            // print(usernameController.text);
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
