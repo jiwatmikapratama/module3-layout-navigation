@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:module3_layout_and_navigation/component/icon.dart';
 import 'package:module3_layout_and_navigation/layouts/deposito.dart';
 import 'package:module3_layout_and_navigation/layouts/login.dart';
@@ -9,8 +11,38 @@ import 'package:module3_layout_and_navigation/layouts/pinjaman.dart';
 import 'package:module3_layout_and_navigation/layouts/transfer.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({super.key});
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  String _scanBarcode = '';
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  Future<void> scanQR() async {
+    String barcodeScanRes;
+    // Platform messages may fail, so we use a try/catch PlatformException.
+    try {
+      barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
+          '#ff6666', 'Cancel', true, ScanMode.QR);
+      print(barcodeScanRes);
+    } on PlatformException {
+      barcodeScanRes = 'Failed to get platform version.';
+    }
+
+    if (!mounted) return;
+
+    setState(() {
+      _scanBarcode = barcodeScanRes;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +115,9 @@ class Home extends StatelessWidget {
         ),
         floatingActionButton: FloatingActionButton(
           backgroundColor: const Color(0xFF1C2474),
-          onPressed: () {},
+          onPressed: () {
+            scanQR();
+          },
           child: Container(
             margin: const EdgeInsets.all(15.0),
             child: const Icon(Icons.qr_code_scanner),
@@ -208,7 +242,6 @@ class Home extends StatelessWidget {
                               Ikon(Icons.payment, 'Pembayaran', Pembayaran()),
                               Ikon(Icons.attach_money, 'Pinjaman', Pinjaman()),
                               Ikon(Icons.insert_chart, 'Mutasi', Mutasi()),
-                              
                             ],
                           ),
                         ),
