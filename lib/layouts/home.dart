@@ -10,6 +10,7 @@ import 'package:module3_layout_and_navigation/layouts/pembayaran.dart';
 import 'package:module3_layout_and_navigation/layouts/pinjaman.dart';
 import 'package:module3_layout_and_navigation/layouts/transfer.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -20,6 +21,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   String _scanBarcode = '';
+  // Uri _url = Uri.parse(_scanBarcode);
 
   @override
   void initState() {
@@ -42,6 +44,12 @@ class _HomeState extends State<Home> {
     setState(() {
       _scanBarcode = barcodeScanRes;
     });
+  }
+
+  Future<void> _launchUrl() async {
+    if (!await launchUrl(Uri.parse(_scanBarcode))) {
+      throw 'Could not launch $_scanBarcode';
+    }
   }
 
   @override
@@ -304,6 +312,17 @@ class _HomeState extends State<Home> {
                     ],
                   ),
                 )),
+                (Container(
+                    width: double.infinity,
+                    color: const Color(0xFFe8ebf5),
+                    margin: const EdgeInsets.fromLTRB(3.0, 15.0, 3.0, 10.0),
+                    padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 10.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        _launchUrl();
+                      },
+                      child: Text('_Scan result : $_scanBarcode\n'),
+                    )))
               ],
             ),
           ),
