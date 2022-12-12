@@ -1,8 +1,10 @@
 // ignore_for_file: avoid_unnecessary_containers
+import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:module3_layout_and_navigation/layouts/home.dart';
+import 'package:module3_layout_and_navigation/model/list_users_model.dart';
 import 'package:module3_layout_and_navigation/services/list_users_services.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
@@ -165,7 +167,7 @@ class _LoginState extends State<Login> {
                             borderRadius: BorderRadius.circular(18.0),
                           ),
                         ),
-                        onPressed: () {
+                        onPressed: () async {
                           // if (usernameController.text == username &&
                           //     passwordController.text == password) {
                           //   Navigator.pushReplacement(
@@ -174,34 +176,38 @@ class _LoginState extends State<Login> {
                           //       builder: (context) => Home(),
                           //     ),
                           //   );
-                          postLogin(
+
+                          // postLogin(
+                          //     usernameController.text, passwordController.text);
+                          // if (postLogin(usernameController.text,
+                          //         passwordController.text) !=
+                          //     null) {
+                          //   print(usernameController.text);
+                          //   print(passwordController.text);
+                          //   // print(usernameController.text);
+                          //   // print(usernameController.text);
+                          //   Navigator.pushReplacement(
+                          //     context,
+                          //     MaterialPageRoute(
+                          //       builder: (context) => Home(),
+                          //     ),
+                          //   );
+                          // } else {
+                          //   showDialog(
+                          //     context: context,
+                          //     builder: (BuildContext context) {
+                          //       if (defaultTargetPlatform ==
+                          //           TargetPlatform.iOS) {
+                          //         return alertIOS;
+                          //       } else {
+                          //         return alertAndroid;
+                          //       }
+                          //     },
+                          //   );
+                          // }
+
+                          ListUsersModel user = postLogin(
                               usernameController.text, passwordController.text);
-                          if (postLogin(usernameController.text,
-                                  passwordController.text) !=
-                              null) {
-                            print(usernameController.text);
-                            print(passwordController.text);
-                            // print(usernameController.text);
-                            // print(usernameController.text);
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => Home(),
-                              ),
-                            );
-                          } else {
-                            showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                if (defaultTargetPlatform ==
-                                    TargetPlatform.iOS) {
-                                  return alertIOS;
-                                } else {
-                                  return alertAndroid;
-                                }
-                              },
-                            );
-                          }
                         },
                         child: Text(
                           "Login",

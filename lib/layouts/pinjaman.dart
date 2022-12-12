@@ -54,53 +54,33 @@ class _PinjamanState extends State<Pinjaman> {
                 itemBuilder: (context, index) {
                   ListUsersModel data = _listUser[index];
                   return cardlist(
-                      data.id!.toString(),
-                      data.firstName!,
-                      data.lastName!,
-                      data.avatar!,
-                      data.email!,
+                      data.user_id!.toString(),
+                      data.username!,
+                      data.password!,
+                      data.nama!,
+                      data.saldo!.toString(),
                       Colors.red,
                       Colors.grey.shade100);
                 }),
           ),
-
-          // FutureBuilder<List<User>?>(
-          //     future: getUsers(),
-          //     builder: (context, snapshot) {
-          //       if (snapshot.hasData) {
-          //         List<User> listUsers = snapshot.data!;
-          //         // tampilkan data
-          //         return Expanded(
-          //           child: ListView.builder(
-          //               itemCount: listUsers.length,
-          //               itemBuilder: (context, index) {
-          //                 return Container(
-          //                   child: Text(listUsers.email),
-          //                 );
-          //               }),
-          //         );
-          //       } else {
-          //         return const Center(child: CircularProgressIndicator());
-          //       }
-          //     })
         ],
       ),
     );
   }
 
-  Widget cardlist(String id, String firstName, String lastname, String avatar,
-      String email, Color color, Color bgColor) {
+  Widget cardlist(String user_id, String username, String password, String nama,
+      String saldo, Color color, Color bgColor) {
     return Card(
       color: bgColor,
       child: ListTile(
-        title: Text(id + '. ' + firstName + ' ' + lastname,
+        title: Text(username + ' ' + password,
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
-        subtitle: Text(email),
+        subtitle: Text(saldo),
         leading: Container(
           height: 40,
           width: 40,
           child: Image.network(
-            avatar,
+            nama,
             scale: 1,
           ),
         ),

@@ -4,7 +4,7 @@ import 'package:module3_layout_and_navigation/model/list_users_model.dart';
 class ListUsersService {
   Dio dio = Dio();
   Future<List<ListUsersModel>?> getDataUsers() async {
-    String url = "https://reqres.in/api/users?page=2";
+    String url = "https://koperasiundiksha.000webhostapp.com/users";
     final Response response;
     try {
       response = await dio.get(
@@ -31,13 +31,23 @@ class ListUsersService {
   }
 
   postLogin(String username, String password) async {
-    String url = 'https://reqres.in/api/users';
+    String url = 'https://koperasiundiksha.000webhostapp.com';
     final Response response;
     FormData formData = FormData.fromMap({"name": username, "job": password});
     try {
       // dio.options.headers['Authentication']
       response = await dio.post(url, data: formData);
       print(response.data);
+      if (response.statusCode == 200) {
+        final data = response.data;
+        return ListUsersModel(
+          user_id: data["user_id"],
+          username: data["username"],
+          password: data["password"],
+          nama: data["nama"],
+          saldo: data["saldo"],
+        );
+      }
     } catch (e) {}
   }
 }
