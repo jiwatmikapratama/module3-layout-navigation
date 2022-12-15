@@ -16,19 +16,15 @@ class _PinjamanState extends State<Pinjaman> {
   //2. buat fungsi get data user
   getUsers() async {
     ListUsersService _service = ListUsersService();
-    await _service.getDataUsers().then((value) {
-      setState(() {
-        _listUser = value!;
-      });
-    });
+    await _service.getDataUsers().then(
+      (value) {
+        print(value);
+        setState(() {
+          _listUser = value!;
+        });
+      },
+    );
   }
-
-  @override
-  // void initState() {
-  //   // TODO: implement initState
-  //   getUsers();
-  //   super.initState();
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +50,7 @@ class _PinjamanState extends State<Pinjaman> {
                 itemBuilder: (context, index) {
                   ListUsersModel data = _listUser[index];
                   return cardlist(
-                      data.user_id!.toString(),
+                      data.userId!.toString(),
                       data.username!,
                       data.password!,
                       data.nama!,
@@ -68,7 +64,7 @@ class _PinjamanState extends State<Pinjaman> {
     );
   }
 
-  Widget cardlist(String user_id, String username, String password, String nama,
+  Widget cardlist(String UserId, String username, String password, String nama,
       String saldo, Color color, Color bgColor) {
     return Card(
       color: bgColor,
@@ -76,14 +72,14 @@ class _PinjamanState extends State<Pinjaman> {
         title: Text(username + ' ' + password,
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
         subtitle: Text(saldo),
-        leading: Container(
-          height: 40,
-          width: 40,
-          child: Image.network(
-            nama,
-            scale: 1,
-          ),
-        ),
+        // leading: Container(
+        //   height: 40,
+        //   width: 40,
+        //   child: Image.network(
+        //     nama,
+        //     scale: 1,
+        //   ),
+        // ),
       ),
     );
   }

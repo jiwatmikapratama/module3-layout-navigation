@@ -34,7 +34,21 @@ class _LoginState extends State<Login> {
 
   postLogin(String username, String password) async {
     ListUsersService _service = ListUsersService();
-    await _service.postLogin(username, password);
+    await _service.postLogin(username, password).then((value) {
+      if (value) {
+        print('login  berhasil');
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Home(),
+          ),
+        );
+      } else {
+        print('login gagal');
+      }
+      print(value);
+    });
+    // print(user);
   }
 
   @override
@@ -186,12 +200,12 @@ class _LoginState extends State<Login> {
                           //   print(passwordController.text);
                           //   // print(usernameController.text);
                           //   // print(usernameController.text);
-                          //   Navigator.pushReplacement(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //       builder: (context) => Home(),
-                          //     ),
-                          //   );
+                          // Navigator.pushReplacement(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: (context) => Home(),
+                          //   ),
+                          // );
                           // } else {
                           //   showDialog(
                           //     context: context,
@@ -205,9 +219,17 @@ class _LoginState extends State<Login> {
                           //     },
                           //   );
                           // }
+                          // }
 
-                          ListUsersModel user = postLogin(
+                          postLogin(
                               usernameController.text, passwordController.text);
+
+                          // Navigator.pushReplacement(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: (context) => Home(),
+                          //   ),
+                          // );
                         },
                         child: Text(
                           "Login",

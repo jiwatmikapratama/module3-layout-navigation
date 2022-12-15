@@ -1,20 +1,20 @@
 class ListUsersModel {
   ListUsersModel({
-    this.user_id,
+    this.userId,
     this.username,
     this.password,
     this.nama,
     this.saldo,
   });
 
-  int? user_id;
+  int? userId;
   String? username;
   String? password;
   String? nama;
   int? saldo;
 
   factory ListUsersModel.fromJson(Map<String, dynamic> json) => ListUsersModel(
-        user_id: json["user_id"],
+        userId: json["user_id"],
         username: json["username"],
         password: json["password"],
         nama: json["nama"],
@@ -22,7 +22,7 @@ class ListUsersModel {
       );
 
   Map<String, dynamic> toJson() => {
-        "user_id": user_id,
+        "user_id": userId,
         "username": username,
         "password": password,
         "nama": nama,
