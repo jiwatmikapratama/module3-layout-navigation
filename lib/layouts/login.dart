@@ -37,11 +37,8 @@ class _LoginState extends State<Login> {
     await _service.postLogin(username, password).then((value) {
       if (value) {
         print('login  berhasil');
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => Home(),
-          ),
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) => Home()),
         );
       } else {
         print('login gagal');

@@ -7,11 +7,11 @@ class ListUsersModel {
     this.saldo,
   });
 
-  int? userId;
+  String? userId;
   String? username;
   String? password;
   String? nama;
-  int? saldo;
+  String? saldo;
 
   factory ListUsersModel.fromJson(Map<String, dynamic> json) => ListUsersModel(
         userId: json["user_id"],

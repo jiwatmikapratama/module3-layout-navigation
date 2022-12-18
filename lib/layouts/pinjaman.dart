@@ -31,7 +31,7 @@ class _PinjamanState extends State<Pinjaman> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFF1a247f),
-        title: Text('Halaman Pinjaman'),
+        title: Text('Pinjaman'),
       ),
       body: Column(
         children: [
@@ -71,7 +71,10 @@ class _PinjamanState extends State<Pinjaman> {
       child: ListTile(
         title: Text(username + ' ' + password,
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
-        subtitle: Text(saldo),
+        subtitle: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [Text(nama), Text(saldo)],
+        ),
         // leading: Container(
         //   height: 40,
         //   width: 40,
