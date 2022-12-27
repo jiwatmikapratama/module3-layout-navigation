@@ -79,7 +79,7 @@ class _DepositoState extends State<Deposito> {
     return Card(
       color: bgColor,
       child: ListTile(
-          title: Text(username + ' ' + password,
+          title: Text(username,
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
           subtitle: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

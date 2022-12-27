@@ -1,53 +1,24 @@
-// ignore_for_file: avoid_unnecessary_containers
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:module3_layout_and_navigation/layouts/home.dart';
-import 'package:module3_layout_and_navigation/layouts/register.dart';
-import 'package:module3_layout_and_navigation/model/list_users_model.dart';
+import 'package:module3_layout_and_navigation/layouts/login.dart';
 import 'package:module3_layout_and_navigation/services/list_users_services.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
-AlertDialog alertAndroid = AlertDialog(
-  title: Text('Masukan Anda Salah!!'),
-  content: Text('Silahkan Masukan Data yang Benar'),
-);
-CupertinoAlertDialog alertIOS = CupertinoAlertDialog(
-  title: Text('Masukan Anda Salah!!'),
-  content: Text('Silahkan Masukan Data yang Benar'),
-);
-
-class Login extends StatefulWidget {
-  const Login({super.key});
+class Register extends StatefulWidget {
+  const Register({super.key});
 
   @override
-  State<Login> createState() => _LoginState();
+  State<Register> createState() => _RegisterState();
 }
 
-class _LoginState extends State<Login> {
+class _RegisterState extends State<Register> {
   String username = 'I Putu Pratama Putra Jiwatmika';
   String password = '2015051016';
 
   final TextEditingController usernameController = new TextEditingController();
   final TextEditingController passwordController = new TextEditingController();
+  final TextEditingController namaController = new TextEditingController();
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-
-  postLogin(String username, String password) async {
-    ListUsersService _service = ListUsersService();
-    await _service.postLogin(username, password).then((value) {
-      if (value) {
-        print('login  berhasil');
-        Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => Home()),
-        );
-      } else {
-        print('login gagal');
-      }
-      print(value);
-    });
-    // print(user);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -119,7 +90,7 @@ class _LoginState extends State<Login> {
                             child: TextFormField(
                               controller: usernameController,
                               decoration: InputDecoration(
-                                hintText: 'Masukan nama sebagai username...',
+                                hintText: 'Masukan username...',
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 ),
@@ -157,7 +128,44 @@ class _LoginState extends State<Login> {
                               controller: passwordController,
                               obscureText: true,
                               decoration: InputDecoration(
-                                hintText: 'Masukan NIM sebagai password...',
+                                hintText: 'Masukan password...',
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.all(20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              bottom: 12,
+                            ),
+                            child: Text(
+                              'Nama: ',
+                              style: TextStyle(
+                                fontSize: ResponsiveValue(context,
+                                    defaultValue: 20.0,
+                                    valueWhen: const [
+                                      Condition.largerThan(
+                                          name: MOBILE, value: 22.0),
+                                      Condition.largerThan(
+                                          name: TABLET, value: 25.0)
+                                    ]).value,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            child: TextFormField(
+                              controller: namaController,
+                              decoration: InputDecoration(
+                                hintText: 'Masukan nama...',
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 ),
@@ -219,8 +227,8 @@ class _LoginState extends State<Login> {
                           // }
                           // }
 
-                          postLogin(
-                              usernameController.text, passwordController.text);
+                          postRegister(usernameController.text,
+                              passwordController.text, namaController.text);
 
                           // Navigator.pushReplacement(
                           //   context,
@@ -230,7 +238,7 @@ class _LoginState extends State<Login> {
                           // );
                         },
                         child: Text(
-                          "Login",
+                          "Register",
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: ResponsiveValue(context,
@@ -256,12 +264,11 @@ class _LoginState extends State<Login> {
                           onPressed: () {
                             // Respond to button press
                             Navigator.of(context).push(
-                              MaterialPageRoute(
-                                  builder: (context) => Register()),
+                              MaterialPageRoute(builder: (context) => Login()),
                             );
                           },
                           child: Text(
-                            "Daftar MBanking",
+                            "Login MBanking",
                             style: TextStyle(
                               fontSize: ResponsiveValue(context,
                                   defaultValue: 18.0,
@@ -325,5 +332,21 @@ class _LoginState extends State<Login> {
         ),
       ),
     );
+  }
+
+  postRegister(String username, String password, String nama) async {
+    ListUsersService _service = ListUsersService();
+    await _service.postRegister(username, password, nama).then((value) {
+      if (value) {
+        print('Register berhasil');
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) => Login()),
+        );
+      } else {
+        print('Register gagal');
+      }
+      print(value);
+    });
+    // print(user);
   }
 }
