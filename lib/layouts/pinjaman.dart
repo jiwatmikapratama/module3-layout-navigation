@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:module3_layout_and_navigation/model/list_users_model.dart';
 import 'package:module3_layout_and_navigation/services/list_users_services.dart';
@@ -32,18 +30,22 @@ class _PinjamanState extends State<Pinjaman> {
       appBar: AppBar(
         backgroundColor: const Color(0xFF1a247f),
         title: Text('Pinjaman'),
+        actions: <Widget>[
+          Padding(
+              padding: EdgeInsets.only(right: 20.0),
+              child: GestureDetector(
+                onTap: () {
+                  getUsers();
+                },
+                child: Icon(
+                  Icons.refresh,
+                  size: 26.0,
+                ),
+              )),
+        ],
       ),
       body: Column(
         children: [
-          ElevatedButton(
-            onPressed: () {
-              getUsers();
-            },
-            child: Text(
-              'Show Data',
-              style: TextStyle(fontSize: 25),
-            ),
-          ),
           Expanded(
             child: ListView.builder(
                 itemCount: _listUser.length,

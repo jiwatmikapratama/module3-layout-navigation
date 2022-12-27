@@ -33,20 +33,23 @@ class _TransferState extends State<Transfer> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFF1a247f),
-        title: Text('Transfer'),
-      ),
+          backgroundColor: const Color(0xFF1a247f),
+          title: Text('Transfer'),
+          actions: [
+            Padding(
+                padding: EdgeInsets.only(right: 20.0),
+                child: GestureDetector(
+                  onTap: () {
+                    getUsers();
+                  },
+                  child: Icon(
+                    Icons.refresh,
+                    size: 26.0,
+                  ),
+                )),
+          ]),
       body: Column(
         children: [
-          ElevatedButton(
-            onPressed: () {
-              getUsers();
-            },
-            child: Text(
-              'Show Data',
-              style: TextStyle(fontSize: 25),
-            ),
-          ),
           Expanded(
             child: ListView.builder(
                 itemCount: _listUser.length,

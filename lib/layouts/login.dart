@@ -119,7 +119,7 @@ class _LoginState extends State<Login> {
                             child: TextFormField(
                               controller: usernameController,
                               decoration: InputDecoration(
-                                hintText: 'Masukan nama sebagai username...',
+                                hintText: 'Masukan nama...',
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 ),
@@ -157,7 +157,7 @@ class _LoginState extends State<Login> {
                               controller: passwordController,
                               obscureText: true,
                               decoration: InputDecoration(
-                                hintText: 'Masukan NIM sebagai password...',
+                                hintText: 'Masukan password...',
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 ),
