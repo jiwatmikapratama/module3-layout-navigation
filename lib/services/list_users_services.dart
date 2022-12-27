@@ -54,4 +54,17 @@ class ListUsersService {
       }
     } catch (e) {}
   }
+
+  setorSaldo(int user_id, double jumlah) async {
+    String url = 'https://koperasiundiksha.000webhostapp.com/setoran';
+    final Response response;
+    FormData formData =
+        FormData.fromMap({"user_id": user_id, "jumlah": jumlah});
+    try {
+      response = await dio.post(url, data: formData);
+      print('berhasil');
+    } catch (e) {
+      print('gagal');
+    }
+  }
 }
