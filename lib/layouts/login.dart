@@ -35,17 +35,22 @@ class _LoginState extends State<Login> {
 
   postLogin(String username, String password) async {
     ListUsersService _service = ListUsersService();
-    await _service.postLogin(username, password).then((value) {
-      if (value) {
-        print('login  berhasil');
-        Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => Home()),
-        );
-      } else {
-        print('login gagal');
-      }
-      print(value);
-    });
+
+    // await _service.postLogin(username, password).then((value) async {
+    //   if (value) {
+    ListUsersModel user = await _service.postLogin(username, password);
+    print('login  berhasil');
+    Navigator.of(context).push(
+      MaterialPageRoute(
+          builder: (context) => Home(
+                user: user,
+              )),
+    );
+    //   } else {
+    //     print('login gagal');
+    //   }
+    //   print(value);
+    // });
     // print(user);
   }
 

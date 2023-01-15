@@ -18,6 +18,8 @@ class _RegisterState extends State<Register> {
   final TextEditingController usernameController = new TextEditingController();
   final TextEditingController passwordController = new TextEditingController();
   final TextEditingController namaController = new TextEditingController();
+  final TextEditingController nomor_rekeningController =
+      new TextEditingController();
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   @override
@@ -176,6 +178,43 @@ class _RegisterState extends State<Register> {
                       ),
                     ),
                     Container(
+                      margin: const EdgeInsets.all(20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              bottom: 12,
+                            ),
+                            child: Text(
+                              'No Rekening: ',
+                              style: TextStyle(
+                                fontSize: ResponsiveValue(context,
+                                    defaultValue: 20.0,
+                                    valueWhen: const [
+                                      Condition.largerThan(
+                                          name: MOBILE, value: 22.0),
+                                      Condition.largerThan(
+                                          name: TABLET, value: 25.0)
+                                    ]).value,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            child: TextFormField(
+                              controller: nomor_rekeningController,
+                              decoration: InputDecoration(
+                                hintText: 'Masukan nomor rekening...',
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
                       width: MediaQuery.of(context).size.width * 0.4,
                       height: 50,
                       child: TextButton(
@@ -227,8 +266,11 @@ class _RegisterState extends State<Register> {
                           // }
                           // }
 
-                          postRegister(usernameController.text,
-                              passwordController.text, namaController.text);
+                          postRegister(
+                              usernameController.text,
+                              passwordController.text,
+                              namaController.text,
+                              nomor_rekeningController.text);
 
                           // Navigator.pushReplacement(
                           //   context,
@@ -334,19 +376,15 @@ class _RegisterState extends State<Register> {
     );
   }
 
-  postRegister(String username, String password, String nama) async {
+  postRegister(
+      String username, String password, String nama, String nim) async {
     ListUsersService _service = ListUsersService();
-    await _service.postRegister(username, password, nama).then((value) {
-      if (value) {
-        print('Register berhasil');
-        Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => Login()),
-        );
-      } else {
-        print('Register gagal');
-      }
-      print(value);
-    });
+    await _service.postRegister(username, password, nama, nim);
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => Login()),
+    );
+    setState(() {});
     // print(user);
   }
 }

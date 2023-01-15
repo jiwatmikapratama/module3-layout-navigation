@@ -9,11 +9,14 @@ import 'package:module3_layout_and_navigation/layouts/mutasi.dart';
 import 'package:module3_layout_and_navigation/layouts/pembayaran.dart';
 import 'package:module3_layout_and_navigation/layouts/pinjaman.dart';
 import 'package:module3_layout_and_navigation/layouts/transfer.dart';
+import 'package:module3_layout_and_navigation/model/list_users_model.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Home extends StatefulWidget {
-  const Home({super.key});
+  const Home({super.key, required this.user});
+
+  final ListUsersModel user;
 
   @override
   State<Home> createState() => _HomeState();
@@ -203,11 +206,13 @@ class _HomeState extends State<Home> {
                                         children: [
                                           ResponsiveRowColumnItem(
                                             child: detailbox('Nasabah',
-                                                'I Putu Pratama Putra Jiwatmika'),
+                                                widget.user.nama.toString()),
                                           ),
                                           ResponsiveRowColumnItem(
                                               child: detailbox(
-                                                  'Total Saldo', '1200.000')),
+                                                  'Total Saldo',
+                                                  widget.user.saldo
+                                                      .toString())),
                                         ],
                                       ),
                                     ),
