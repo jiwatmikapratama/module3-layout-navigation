@@ -88,6 +88,27 @@ class ListUsersService {
     }
   }
 
+  transfer(
+    int user_id,
+    double jumlah,
+    String nomor_rekening,
+  ) async {
+    String url = 'http://apikoperasi.rey1024.com/transfer';
+    final Response response;
+    FormData formData = FormData.fromMap({
+      "id_pengirim": user_id,
+      "jumlah_transfer": jumlah,
+      "nomor_rekening": nomor_rekening
+    });
+    try {
+      response = await dio.post(url, data: formData);
+      print('berhasil');
+      return true;
+    } catch (e) {
+      print('gagal');
+    }
+  }
+
   postRegister(
       String username, String password, String nama, String nim) async {
     String url = 'http://apikoperasi.rey1024.com/register';

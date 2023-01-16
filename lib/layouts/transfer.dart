@@ -3,13 +3,18 @@ import 'package:module3_layout_and_navigation/model/list_users_model.dart';
 import 'package:module3_layout_and_navigation/services/list_users_services.dart';
 
 class Transfer extends StatefulWidget {
-  const Transfer({super.key});
+  const Transfer({super.key, required this.user});
 
+  final ListUsersModel user;
   @override
   State<Transfer> createState() => _TransferState();
 }
 
 class _TransferState extends State<Transfer> {
+  final TextEditingController transferController = new TextEditingController();
+  final TextEditingController nomorRekeningController =
+      new TextEditingController();
+
   bool setorLoading = false;
 
   //1. buat variabel list user model
@@ -53,100 +58,49 @@ class _TransferState extends State<Transfer> {
       body: Column(
         children: [
           Expanded(
-            child: ListView.builder(
-                itemCount: _listUser.length,
-                itemBuilder: (context, index) {
-                  ListUsersModel data = _listUser[index];
-                  return cardlist(
-                      data.userId!,
-                      data.username!,
-                      data.password!,
-                      data.nama!,
-                      data.saldo!,
-                      Colors.red,
-                      Colors.grey.shade100);
-                }),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget cardlist(String UserId, String username, String password, String nama,
-      String saldo, Color color, Color bgColor) {
-    return Card(
-      color: bgColor,
-      child: ListTile(
-          title: Text(username,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
-          subtitle: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [Text(nama), Text(saldo)],
-          ),
-          trailing: IconButton(
-              onPressed: () async {
-                setState(() {
-                  // setorLoading = true;
-                });
-                await setoran(UserId);
-              },
-              icon: Icon(Icons.upload))),
-    );
-  }
-
-  setoran(String? user_id) {
-    TextEditingController jumlah = TextEditingController();
-    showDialog(
-      context: context,
-      builder: (_) => AlertDialog(
-        title: Text('Are You Sure?'),
-        actions: [
-          TextField(
-            controller: jumlah,
-            keyboardType: TextInputType.number,
-          ),
-          (setorLoading)
-              ? CircularProgressIndicator()
-              : ElevatedButton(
+            child: Column(children: [
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 3.0, horizontal: 6.0),
+                child: TextFormField(
+                  controller: transferController,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    hintText: 'Masukan jumlah yang akan ditransfer...',
+                  ),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 3.0, horizontal: 6.0),
+                child: TextFormField(
+                  controller: nomorRekeningController,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    hintText: 'Masukan nomor rekening tujuan...',
+                  ),
+                ),
+              ),
+              ElevatedButton(
                   onPressed: () async {
-                    await setorSaldo(user_id, jumlah.text);
+                    print(widget.user.userId);
+                    await transfer(widget.user.userId, transferController.text,
+                        nomorRekeningController.text);
                     // Navigator.of(context).push(
                     //   MaterialPageRoute(builder: (context) => Home()),
                     // );
-                    Navigator.pop(context);
+                    // Navigator.pop(context);
+                    print('object');
                   },
-                  child: Text('Yes'),
-                ),
+                  child: Text('OK'))
+            ]),
+          ),
         ],
       ),
     );
   }
 
-  setorSaldo(String? user_id, String jumlah) async {
+  transfer(String? user_id, String jumlah, String nomorRekening) async {
     ListUsersService _service = ListUsersService();
-    await _service.setorSaldo(int.parse(user_id!), double.parse(jumlah));
+    await _service.transfer(
+        int.parse(user_id!), double.parse(jumlah), nomorRekening);
   }
-}
-
-Widget cardlist(String UserId, String username, String password, String nama,
-    String saldo, Color color, Color bgColor) {
-  return Card(
-    color: bgColor,
-    child: ListTile(
-      title: Text(username + ' ' + password,
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
-      subtitle: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [Text(nama), Text(saldo)],
-      ),
-      // leading: Container(
-      //   height: 40,
-      //   width: 40,
-      //   child: Image.network(
-      //     nama,
-      //     scale: 1,
-      //   ),
-      // ),
-    ),
-  );
 }

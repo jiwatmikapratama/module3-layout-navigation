@@ -264,8 +264,12 @@ class _HomeState extends State<Home> {
                             children: [
                               Ikon(Icons.wallet_giftcard, 'Cek Saldo',
                                   Pinjaman()),
-                              Ikon(Icons.monetization_on, 'Transfer',
-                                  Transfer()),
+                              Ikon(
+                                  Icons.monetization_on,
+                                  'Transfer',
+                                  Transfer(
+                                    user: widget.user,
+                                  )),
                               Ikon(
                                   Icons.money,
                                   'Setoran',
