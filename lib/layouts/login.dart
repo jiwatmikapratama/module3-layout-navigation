@@ -8,6 +8,7 @@ import 'package:module3_layout_and_navigation/layouts/register.dart';
 import 'package:module3_layout_and_navigation/model/list_users_model.dart';
 import 'package:module3_layout_and_navigation/services/list_users_services.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 AlertDialog alertAndroid = AlertDialog(
   title: Text('Masukan Anda Salah!!'),
@@ -34,6 +35,8 @@ class _LoginState extends State<Login> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   postLogin(String username, String password) async {
+    // final prefs = await SharedPreferences.getInstance();
+    // await prefs.setString('action', 'Start');
     ListUsersService _service = ListUsersService();
 
     // await _service.postLogin(username, password).then((value) async {

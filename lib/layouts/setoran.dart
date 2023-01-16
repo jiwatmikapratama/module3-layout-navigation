@@ -3,14 +3,17 @@ import 'package:module3_layout_and_navigation/layouts/home.dart';
 import 'package:module3_layout_and_navigation/model/list_users_model.dart';
 import 'package:module3_layout_and_navigation/services/list_users_services.dart';
 
-class Deposito extends StatefulWidget {
-  const Deposito({super.key});
+class Setoran extends StatefulWidget {
+  const Setoran({super.key, required this.user});
 
+  final ListUsersModel user;
   @override
-  State<Deposito> createState() => _DepositoState();
+  State<Setoran> createState() => _SetoranState();
 }
 
-class _DepositoState extends State<Deposito> {
+class _SetoranState extends State<Setoran> {
+  final TextEditingController setoranController = new TextEditingController();
+
   bool setorLoading = false;
   //1. buat variabel list user model
   List<ListUsersModel> _listUser = [];
@@ -37,7 +40,7 @@ class _DepositoState extends State<Deposito> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFF1a247f),
-        title: Text('Deposito'),
+        title: Text('Setoran'),
         actions: <Widget>[
           Padding(
               padding: EdgeInsets.only(right: 20.0),
@@ -55,48 +58,36 @@ class _DepositoState extends State<Deposito> {
       body: Column(
         children: [
           Expanded(
-            child: ListView.builder(
-                itemCount: _listUser.length,
-                itemBuilder: (context, index) {
-                  ListUsersModel data = _listUser[index];
-                  return cardlist(
-                      data.userId!,
-                      data.username!,
-                      data.password!,
-                      data.nama!,
-                      data.saldo!,
-                      Colors.red,
-                      Colors.grey.shade100);
-                }),
+            child: Column(children: [
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 3.0, horizontal: 6.0),
+                child: TextFormField(
+                  controller: setoranController,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    hintText: 'Masukan jumlah setoran...',
+                  ),
+                ),
+              ),
+              ElevatedButton(
+                  onPressed: () async {
+                    print(widget.user.userId);
+                    await setorSaldo(
+                        widget.user.userId, setoranController.text);
+                    // Navigator.of(context).push(
+                    //   MaterialPageRoute(builder: (context) => Home()),
+                    // );
+                    Navigator.pop(context);
+                  },
+                  child: Text('OK'))
+            ]),
           ),
         ],
       ),
     );
   }
 
-  Widget cardlist(String UserId, String username, String password, String nama,
-      String saldo, Color color, Color bgColor) {
-    return Card(
-      color: bgColor,
-      child: ListTile(
-          title: Text(username,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
-          subtitle: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [Text(nama), Text(saldo)],
-          ),
-          trailing: IconButton(
-              onPressed: () async {
-                setState(() {
-                  // setorLoading = true;
-                });
-                await deposito(UserId);
-              },
-              icon: Icon(Icons.upload))),
-    );
-  }
-
-  deposito(String? user_id) {
+  setoran(String? user_id) {
     TextEditingController jumlah = TextEditingController();
     showDialog(
       context: context,

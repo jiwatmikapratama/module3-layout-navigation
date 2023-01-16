@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:module3_layout_and_navigation/component/icon.dart';
-import 'package:module3_layout_and_navigation/layouts/deposito.dart';
+import 'package:module3_layout_and_navigation/layouts/setoran.dart';
 import 'package:module3_layout_and_navigation/layouts/login.dart';
 import 'package:module3_layout_and_navigation/component/detailbox.dart';
 import 'package:module3_layout_and_navigation/layouts/mutasi.dart';
 import 'package:module3_layout_and_navigation/layouts/pembayaran.dart';
 import 'package:module3_layout_and_navigation/layouts/pinjaman.dart';
+import 'package:module3_layout_and_navigation/layouts/tarikan.dart';
 import 'package:module3_layout_and_navigation/layouts/transfer.dart';
 import 'package:module3_layout_and_navigation/model/list_users_model.dart';
 import 'package:responsive_framework/responsive_framework.dart';
@@ -210,9 +211,9 @@ class _HomeState extends State<Home> {
                                           ),
                                           ResponsiveRowColumnItem(
                                               child: detailbox(
-                                                  'Total Saldo',
-                                                  widget.user.saldo
-                                                      .toString())),
+                                            'Total Saldo',
+                                            widget.user.saldo.toString(),
+                                          )),
                                         ],
                                       ),
                                     ),
@@ -251,10 +252,16 @@ class _HomeState extends State<Home> {
                                   Pinjaman()),
                               Ikon(Icons.monetization_on, 'Transfer',
                                   Transfer()),
-                              Ikon(Icons.money, 'Deposito', Deposito()),
+                              Ikon(
+                                  Icons.money,
+                                  'Setoran',
+                                  Setoran(
+                                    user: widget.user,
+                                  )),
+                              Ikon(Icons.money, 'Tarikan', Tarikan()),
                               Ikon(Icons.payment, 'Pembayaran', Pembayaran()),
                               Ikon(Icons.attach_money, 'Pinjaman', Pinjaman()),
-                              Ikon(Icons.insert_chart, 'Mutasi', Mutasi()),
+                              // Ikon(Icons.insert_chart, 'Mutasi', Mutasi()),
                             ],
                           ),
                         ),

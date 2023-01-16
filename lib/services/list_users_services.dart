@@ -62,10 +62,10 @@ class ListUsersService {
   }
 
   setorSaldo(int user_id, double jumlah) async {
-    String url = 'https://koperasiundiksha.000webhostapp.com/setoran';
+    String url = 'http://apikoperasi.rey1024.com/setoran';
     final Response response;
     FormData formData =
-        FormData.fromMap({"user_id": user_id, "jumlah": jumlah});
+        FormData.fromMap({"user_id": user_id, "jumlah_setoran": jumlah});
     try {
       response = await dio.post(url, data: formData);
       print('berhasil');
@@ -75,7 +75,7 @@ class ListUsersService {
   }
 
   tarikSaldo(int user_id, double jumlah) async {
-    String url = 'https://koperasiundiksha.000webhostapp.com/tarikan';
+    String url = 'http://apikoperasi.rey1024.com/tarikan';
     final Response response;
     FormData formData =
         FormData.fromMap({"user_id": user_id, "jumlah": jumlah});

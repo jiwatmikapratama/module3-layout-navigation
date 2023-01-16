@@ -10,6 +10,8 @@ class Transfer extends StatefulWidget {
 }
 
 class _TransferState extends State<Transfer> {
+  bool setorLoading = false;
+
   //1. buat variabel list user model
   List<ListUsersModel> _listUser = [];
 
@@ -68,6 +70,61 @@ class _TransferState extends State<Transfer> {
         ],
       ),
     );
+  }
+
+  Widget cardlist(String UserId, String username, String password, String nama,
+      String saldo, Color color, Color bgColor) {
+    return Card(
+      color: bgColor,
+      child: ListTile(
+          title: Text(username,
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
+          subtitle: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [Text(nama), Text(saldo)],
+          ),
+          trailing: IconButton(
+              onPressed: () async {
+                setState(() {
+                  // setorLoading = true;
+                });
+                await setoran(UserId);
+              },
+              icon: Icon(Icons.upload))),
+    );
+  }
+
+  setoran(String? user_id) {
+    TextEditingController jumlah = TextEditingController();
+    showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: Text('Are You Sure?'),
+        actions: [
+          TextField(
+            controller: jumlah,
+            keyboardType: TextInputType.number,
+          ),
+          (setorLoading)
+              ? CircularProgressIndicator()
+              : ElevatedButton(
+                  onPressed: () async {
+                    await setorSaldo(user_id, jumlah.text);
+                    // Navigator.of(context).push(
+                    //   MaterialPageRoute(builder: (context) => Home()),
+                    // );
+                    Navigator.pop(context);
+                  },
+                  child: Text('Yes'),
+                ),
+        ],
+      ),
+    );
+  }
+
+  setorSaldo(String? user_id, String jumlah) async {
+    ListUsersService _service = ListUsersService();
+    await _service.setorSaldo(int.parse(user_id!), double.parse(jumlah));
   }
 }
 
