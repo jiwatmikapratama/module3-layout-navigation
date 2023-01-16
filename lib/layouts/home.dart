@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, prefer_interpolation_to_compose_strings
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
@@ -5,12 +7,12 @@ import 'package:module3_layout_and_navigation/component/icon.dart';
 import 'package:module3_layout_and_navigation/layouts/setoran.dart';
 import 'package:module3_layout_and_navigation/layouts/login.dart';
 import 'package:module3_layout_and_navigation/component/detailbox.dart';
-import 'package:module3_layout_and_navigation/layouts/mutasi.dart';
 import 'package:module3_layout_and_navigation/layouts/pembayaran.dart';
 import 'package:module3_layout_and_navigation/layouts/pinjaman.dart';
 import 'package:module3_layout_and_navigation/layouts/tarikan.dart';
 import 'package:module3_layout_and_navigation/layouts/transfer.dart';
 import 'package:module3_layout_and_navigation/model/list_users_model.dart';
+import 'package:module3_layout_and_navigation/services/list_users_services.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -24,6 +26,11 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  getsingleuser(String? user_id) async {
+    ListUsersService _service = ListUsersService();
+    await _service.getsingleuser(int.parse(user_id!));
+  }
+
   String _scanBarcode = '';
   // Uri _url = Uri.parse(_scanBarcode);
 
@@ -221,6 +228,45 @@ class _HomeState extends State<Home> {
                                                 // widget.user.saldo.toString(),
                                                 ),
                                           ),
+                                          ResponsiveRowColumnItem(
+                                              child: ElevatedButton(
+                                            onPressed: () {
+                                              showDialog(
+                                                context: context,
+                                                builder: (_) => AlertDialog(
+                                                  title: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Text('Detail User'),
+                                                      Text('No Rekening: ' +
+                                                          widget.user
+                                                              .nomorRekening
+                                                              .toString()),
+                                                      Text('Nama User: ' +
+                                                          widget.user.nama
+                                                              .toString()),
+                                                      Text('Username: ' +
+                                                          widget.user.username
+                                                              .toString()),
+                                                    ],
+                                                  ),
+                                                  actions: [
+                                                    TextButton(
+                                                        onPressed: () {
+                                                          Navigator.pop(
+                                                              context);
+                                                        },
+                                                        child: Text('OK'))
+                                                  ],
+                                                ),
+                                              );
+
+                                              getsingleuser(widget.user.userId);
+                                            },
+                                            child: Text('Detail'),
+                                          )),
                                           ResponsiveRowColumnItem(
                                             child: IconButton(
                                                 onPressed: () {

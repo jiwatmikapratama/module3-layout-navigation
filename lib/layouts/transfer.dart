@@ -15,8 +15,6 @@ class _TransferState extends State<Transfer> {
   final TextEditingController nomorRekeningController =
       new TextEditingController();
 
-  bool setorLoading = false;
-
   //1. buat variabel list user model
   List<ListUsersModel> _listUser = [];
 
@@ -40,21 +38,9 @@ class _TransferState extends State<Transfer> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: const Color(0xFF1a247f),
-          title: Text('Transfer'),
-          actions: [
-            Padding(
-                padding: EdgeInsets.only(right: 20.0),
-                child: GestureDetector(
-                  onTap: () {
-                    getUsers();
-                  },
-                  child: Icon(
-                    Icons.refresh,
-                    size: 26.0,
-                  ),
-                )),
-          ]),
+        backgroundColor: const Color(0xFF1a247f),
+        title: Text('Transfer'),
+      ),
       body: Column(
         children: [
           Expanded(

@@ -58,7 +58,22 @@ class ListUsersService {
           nomorRekening: data[0]['nomor_rekening'],
         );
       }
-    } catch (e) {}
+    } catch (e) {
+      print('gagal');
+    }
+  }
+
+  getsingleuser(int user_id) async {
+    String url = 'http://apikoperasi.rey1024.com/getsingleuser';
+    final Response response;
+    FormData formData = FormData.fromMap({"user_id": user_id});
+    try {
+      response = await dio.post(url, data: formData);
+      print(response.data);
+      print('berhasil');
+    } catch (e) {
+      print('gagal');
+    }
   }
 
   setorSaldo(int user_id, double jumlah) async {
