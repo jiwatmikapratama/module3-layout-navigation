@@ -32,6 +32,12 @@ class _HomeState extends State<Home> {
     super.initState();
   }
 
+  void refreshSaldo() {
+    setState(() {
+      widget.user.saldo;
+    });
+  }
+
   Future<void> scanQR() async {
     String barcodeScanRes;
     // Platform messages may fail, so we use a try/catch PlatformException.
@@ -210,10 +216,18 @@ class _HomeState extends State<Home> {
                                                 widget.user.nama.toString()),
                                           ),
                                           ResponsiveRowColumnItem(
-                                              child: detailbox(
-                                            'Total Saldo',
-                                            widget.user.saldo.toString(),
-                                          )),
+                                            child: detailbox('Total Saldo',
+                                                widget.user.saldo.toString()
+                                                // widget.user.saldo.toString(),
+                                                ),
+                                          ),
+                                          ResponsiveRowColumnItem(
+                                            child: IconButton(
+                                                onPressed: () {
+                                                  refreshSaldo();
+                                                },
+                                                icon: Icon(Icons.refresh)),
+                                          ),
                                         ],
                                       ),
                                     ),
@@ -258,7 +272,12 @@ class _HomeState extends State<Home> {
                                   Setoran(
                                     user: widget.user,
                                   )),
-                              Ikon(Icons.money, 'Tarikan', Tarikan()),
+                              Ikon(
+                                  Icons.money,
+                                  'Tarikan',
+                                  Tarikan(
+                                    user: widget.user,
+                                  )),
                               Ikon(Icons.payment, 'Pembayaran', Pembayaran()),
                               Ikon(Icons.attach_money, 'Pinjaman', Pinjaman()),
                               // Ikon(Icons.insert_chart, 'Mutasi', Mutasi()),

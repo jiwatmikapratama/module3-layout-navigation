@@ -78,7 +78,7 @@ class ListUsersService {
     String url = 'http://apikoperasi.rey1024.com/tarikan';
     final Response response;
     FormData formData =
-        FormData.fromMap({"user_id": user_id, "jumlah": jumlah});
+        FormData.fromMap({"user_id": user_id, "jumlah_tarikan": jumlah});
     try {
       response = await dio.post(url, data: formData);
       print('berhasil');

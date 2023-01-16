@@ -16,24 +16,6 @@ class _SetoranState extends State<Setoran> {
 
   bool setorLoading = false;
   //1. buat variabel list user model
-  List<ListUsersModel> _listUser = [];
-
-  //2. buat fungsi get data user
-  getUsers() async {
-    ListUsersService _service = ListUsersService();
-    await _service.getDataUsers().then(
-      (value) {
-        if (value != null) {
-          print(value);
-        }
-
-        setState(() {
-          _listUser = value!;
-          setorLoading = false;
-        });
-      },
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,19 +23,6 @@ class _SetoranState extends State<Setoran> {
       appBar: AppBar(
         backgroundColor: const Color(0xFF1a247f),
         title: Text('Setoran'),
-        actions: <Widget>[
-          Padding(
-              padding: EdgeInsets.only(right: 20.0),
-              child: GestureDetector(
-                onTap: () {
-                  getUsers();
-                },
-                child: Icon(
-                  Icons.refresh,
-                  size: 26.0,
-                ),
-              )),
-        ],
       ),
       body: Column(
         children: [
