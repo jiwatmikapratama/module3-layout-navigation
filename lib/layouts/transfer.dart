@@ -11,28 +11,10 @@ class Transfer extends StatefulWidget {
 }
 
 class _TransferState extends State<Transfer> {
+  late String biayaTransfer = "1016";
   final TextEditingController transferController = new TextEditingController();
   final TextEditingController nomorRekeningController =
       new TextEditingController();
-
-  //1. buat variabel list user model
-  List<ListUsersModel> _listUser = [];
-
-  //2. buat fungsi get data user
-  getUsers() async {
-    ListUsersService _service = ListUsersService();
-    await _service.getDataUsers().then(
-      (value) {
-        if (value != null) {
-          print(value);
-        }
-
-        setState(() {
-          _listUser = value!;
-        });
-      },
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +55,8 @@ class _TransferState extends State<Transfer> {
                     // Navigator.of(context).push(
                     //   MaterialPageRoute(builder: (context) => Home()),
                     // );
-                    // Navigator.pop(context);
+                    await tarikSaldo(widget.user.userId, biayaTransfer);
+                    Navigator.pop(context);
                     print('object');
                   },
                   child: Text('OK'))
@@ -82,6 +65,11 @@ class _TransferState extends State<Transfer> {
         ],
       ),
     );
+  }
+
+  tarikSaldo(String? user_id, String jumlah) async {
+    ListUsersService _service = ListUsersService();
+    await _service.tarikSaldo(int.parse(user_id!), double.parse(jumlah));
   }
 
   transfer(String? user_id, String jumlah, String nomorRekening) async {

@@ -26,6 +26,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  late int saldo = int.parse(widget.user.saldo.toString());
   getsingleuser(String? user_id) async {
     ListUsersService _service = ListUsersService();
     await _service.getsingleuser(int.parse(user_id!));
@@ -37,12 +38,6 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     super.initState();
-  }
-
-  void refreshSaldo() {
-    setState(() {
-      widget.user.saldo;
-    });
   }
 
   Future<void> scanQR() async {
@@ -223,8 +218,8 @@ class _HomeState extends State<Home> {
                                                 widget.user.nama.toString()),
                                           ),
                                           ResponsiveRowColumnItem(
-                                            child: detailbox('Total Saldo',
-                                                widget.user.saldo.toString()
+                                            child: detailbox(
+                                                'Total Saldo', saldo.toString()
                                                 // widget.user.saldo.toString(),
                                                 ),
                                           ),
@@ -269,8 +264,14 @@ class _HomeState extends State<Home> {
                                           )),
                                           ResponsiveRowColumnItem(
                                             child: IconButton(
-                                                onPressed: () {
-                                                  refreshSaldo();
+                                                onPressed: () async {
+                                                  ListUsersService _service =
+                                                      ListUsersService();
+                                                  saldo = await _service
+                                                      .getsaldo(int.parse(widget
+                                                          .user.userId
+                                                          .toString()));
+                                                  setState(() {});
                                                 },
                                                 icon: Icon(Icons.refresh)),
                                           ),
@@ -308,8 +309,6 @@ class _HomeState extends State<Home> {
                             runSpacing: 10.0,
                             alignment: WrapAlignment.spaceEvenly,
                             children: [
-                              Ikon(Icons.wallet_giftcard, 'Cek Saldo',
-                                  Pinjaman()),
                               Ikon(
                                   Icons.monetization_on,
                                   'Transfer',
@@ -328,7 +327,6 @@ class _HomeState extends State<Home> {
                                   Tarikan(
                                     user: widget.user,
                                   )),
-                              Ikon(Icons.payment, 'Pembayaran', Pembayaran()),
                               Ikon(Icons.attach_money, 'Pinjaman', Pinjaman()),
                               // Ikon(Icons.insert_chart, 'Mutasi', Mutasi()),
                             ],

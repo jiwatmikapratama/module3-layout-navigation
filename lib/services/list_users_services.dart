@@ -76,6 +76,27 @@ class ListUsersService {
     }
   }
 
+  getsaldo(int user_id) async {
+    String url = 'http://apikoperasi.rey1024.com/getsingleuser';
+    final Response response;
+    FormData formData = FormData.fromMap({"user_id": user_id});
+    try {
+      response = await dio.post(url, data: formData);
+      print(response.data);
+      if (response.statusCode == 200) {
+        print('berhasil');
+        final data = response.data;
+        print(data[0]['saldo']);
+        return int.parse(data[0]['saldo']);
+        // return print(response.statusCode);
+      } else {
+        return print('gagal');
+      }
+    } catch (e) {
+      print('gagal');
+    }
+  }
+
   setorSaldo(int user_id, double jumlah) async {
     String url = 'http://apikoperasi.rey1024.com/setoran';
     final Response response;
